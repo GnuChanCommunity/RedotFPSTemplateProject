@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://imsskdj60jnw"]
+
+[ext_resource type="Texture2D" uid="uid://cvfsxmprr83g" path="res://3D/gameRoom_fullColorAtlas.png" id="1_1xss0"]
+[ext_resource type="Shader" path="res://shaders/main.gdshader" id="3_jq6so"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bklx"]
+render_priority = 0
+shader = ExtResource("3_jq6so")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 2.0
+shader_parameter/fade_start = 10.0
+shader_parameter/fade_end = 30.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_2bklx")
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("1_1xss0")

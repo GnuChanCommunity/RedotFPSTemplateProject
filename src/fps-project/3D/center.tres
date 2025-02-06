@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dt2r7n5lltw2w"]
+
+[ext_resource type="Shader" path="res://shaders/glass.gdshader" id="1_cqya7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocsde"]
+render_priority = 0
+shader = ExtResource("1_cqya7")
+shader_parameter/tint_color = Color(0.521383, 0.121484, 0.718097, 0.611765)
+shader_parameter/backlight_color = Color(0.747014, 0.0875339, 0.626543, 1)
+shader_parameter/noise_strenght = 0.005
+shader_parameter/roughness = 0.0
+shader_parameter/normal_strenght = 0.0
+
+[resource]
+next_pass = SubResource("ShaderMaterial_ocsde")
+transparency = 1
+specular_mode = 1
+albedo_color = Color(0.654902, 0.411765, 0.890196, 0.592157)
+emission = Color(0.101735, 3.58785e-05, 0.133637, 1)
