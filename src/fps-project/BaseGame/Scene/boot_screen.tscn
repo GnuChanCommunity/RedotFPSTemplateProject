@@ -1,0 +1,167 @@
+[gd_scene load_steps=19 format=3 uid="uid://fgiod327da14"]
+
+[ext_resource type="Script" path="res://BaseGame/Script/boot_screen.gd" id="1_1epxv"]
+[ext_resource type="Texture2D" uid="uid://d2ekto4gm5yun" path="res://BaseGame/3D/gameRoom_screenW.png" id="1_hrytx"]
+[ext_resource type="FontFile" uid="uid://dpn24n1mjdh6q" path="res://BaseGame/Font/FreeSans.otf" id="5_ah65x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0226"]
+texture = ExtResource("1_hrytx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1pq2n"]
+bg_color = Color(0.352697, 0.0937819, 0.6038, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbihk"]
+bg_color = Color(0.215414, 0.0410732, 0.341292, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbhnk"]
+bg_color = Color(0.178551, 0.0242971, 0.306155, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwvcs"]
+bg_color = Color(0.239216, 0.0862745, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25vt5"]
+bg_color = Color(0.27451, 0.0784314, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhwjd"]
+bg_color = Color(0.568627, 0.309804, 0.862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gmcr"]
+bg_color = Color(0.423529, 0.184314, 0.670588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xo3sh"]
+bg_color = Color(0.239216, 0.0862745, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17pcu"]
+bg_color = Color(0.239216, 0.0862745, 0.396078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7q2l1"]
+bg_color = Color(0.274702, 0.0766173, 0.349067, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc7p6"]
+bg_color = Color(0.567635, 0.31174, 0.862924, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnfli"]
+bg_color = Color(0.421919, 0.184459, 0.671247, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klcjb"]
+bg_color = Color(0.23792, 0.0871435, 0.395159, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8n2r7"]
+bg_color = Color(0.284833, 0.0848382, 0.351939, 1)
+
+[node name="bootScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1epxv")
+
+[node name="bg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_a0226")
+
+[node name="hide" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 627.0
+offset_right = 804.0
+offset_bottom = 645.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1pq2n")
+
+[node name="textbox" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="TextEdit" parent="textbox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -134.0
+offset_right = -16.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_ah65x")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/read_only = SubResource("StyleBoxFlat_mbihk")
+editable = false
+
+[node name="next" type="Label" parent="textbox"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 475.0
+offset_right = 529.0
+offset_bottom = 511.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_sbhnk")
+
+[node name="SelectLang" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TurkceLang" type="Button" parent="SelectLang"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 289.0
+offset_right = 306.0
+offset_bottom = 344.0
+theme_override_fonts/font = ExtResource("5_ah65x")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_rwvcs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_25vt5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fhwjd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8gmcr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xo3sh")
+text = "Turkce Dil"
+
+[node name="EngLang2" type="Button" parent="SelectLang"]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 355.0
+offset_right = 335.0
+offset_bottom = 410.0
+theme_override_fonts/font = ExtResource("5_ah65x")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_17pcu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7q2l1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uc7p6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vnfli")
+theme_override_styles/normal = SubResource("StyleBoxFlat_klcjb")
+text = "English Lang"
+
+[node name="name" type="LineEdit" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -195.0
+offset_right = 155.5
+offset_bottom = -164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ah65x")
+theme_override_styles/focus = SubResource("StyleBoxFlat_8n2r7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8n2r7")
+placeholder_text = "Enter You're Name"
+
+[connection signal="pressed" from="SelectLang/TurkceLang" to="." method="_on_turkce_lang_pressed"]
+[connection signal="pressed" from="SelectLang/EngLang2" to="." method="_on_eng_lang_2_pressed"]

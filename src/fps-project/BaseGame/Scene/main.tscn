@@ -1,0 +1,904 @@
+[gd_scene load_steps=65 format=3 uid="uid://cagkj8hanudu5"]
+
+[ext_resource type="Script" path="res://BaseGame/Script/main.gd" id="1_duc7r"]
+[ext_resource type="PackedScene" uid="uid://i5lsf13cwndp" path="res://BaseGame/3D/gameRoom.glb" id="1_j6ya8"]
+[ext_resource type="PackedScene" uid="uid://cm35eskp0o7ah" path="res://BaseGame/fps/fps.tscn" id="2_pg0ns"]
+[ext_resource type="PackedScene" uid="uid://cl30v0ccw5vfu" path="res://BaseGame/3D/centerObject.glb" id="4_ncf5p"]
+[ext_resource type="AudioStream" uid="uid://bl1mpasd8ell3" path="res://BaseGame/Sounds/insidesound.ogg" id="4_oombf"]
+[ext_resource type="Animation" uid="uid://cfyolc7fdm1mx" path="res://BaseGame/3D/1_energy_ready.res" id="5_46sdm"]
+[ext_resource type="Script" path="res://BaseGame/Script/cam_area.gd" id="5_gnv4b"]
+[ext_resource type="Script" path="res://BaseGame/Script/game_room.gd" id="5_om0u1"]
+[ext_resource type="AudioStream" uid="uid://cq2cvyrbfyyaa" path="res://BaseGame/Sounds/startGame.ogg" id="7_expo7"]
+[ext_resource type="PackedScene" uid="uid://cq57f1f02inw3" path="res://BaseGame/3D/startEngineObject.glb" id="7_uiylh"]
+[ext_resource type="PackedScene" uid="uid://b62h014f4w3af" path="res://BaseGame/3D/fusionReady.glb" id="10_3ah3d"]
+[ext_resource type="AudioStream" uid="uid://yotsdc85uog7" path="res://BaseGame/Sounds/Placeholder_Startengine.ogg" id="10_obgyj"]
+[ext_resource type="PackedScene" uid="uid://qxy2iajeoatg" path="res://BaseGame/3D/fusion_rotate.glb" id="11_85lms"]
+[ext_resource type="PackedScene" uid="uid://jf23ypuyrwi4" path="res://BaseGame/3D/settingsObject.glb" id="11_er5ma"]
+[ext_resource type="AudioStream" uid="uid://dfwv4ykarjolv" path="res://BaseGame/Sounds/placeholder_start.ogg" id="12_6rpka"]
+[ext_resource type="AudioStream" uid="uid://djimgp1pk07yn" path="res://BaseGame/Sounds/fusionPR.ogg" id="12_kij7n"]
+[ext_resource type="PackedScene" uid="uid://b03a4vrhjf5t2" path="res://BaseGame/3D/button.glb" id="12_pu7r2"]
+[ext_resource type="PackedScene" uid="uid://bjr56h5kqfohw" path="res://BaseGame/3D/fusionReadyX3Object.glb" id="12_r6idi"]
+[ext_resource type="PackedScene" uid="uid://cn4jmr45pkota" path="res://BaseGame/LifeStock/LFME.tscn" id="16_6njx3"]
+[ext_resource type="PackedScene" uid="uid://ckf21bjqqnf4j" path="res://BaseGame/3D/energyDC.glb" id="19_e40sb"]
+[ext_resource type="Script" path="res://BaseGame/Script/pleh.gd" id="20_1rn7a"]
+[ext_resource type="AudioStream" uid="uid://cwqs2ceyb1swv" path="res://BaseGame/Sounds/lastvoice.ogg" id="22_nkxp6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fyady"]
+
+[sub_resource type="Sky" id="Sky_l7glf"]
+sky_material = SubResource("ProceduralSkyMaterial_fyady")
+
+[sub_resource type="Environment" id="Environment_fcrsm"]
+background_mode = 1
+sky = SubResource("Sky_l7glf")
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_m0mxb"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7jo6a"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7ufsk"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4m876"]
+size = Vector3(1.02942, 1.17981, 0.421387)
+
+[sub_resource type="Animation" id="Animation_aihy8"]
+resource_name = "zoomSettingsCam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.005, 1.65, 0.317028), Vector3(-0.005, 1.65, 0.615941)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03o6b"]
+_data = {
+"zoomSettingsCam": SubResource("Animation_aihy8")
+}
+
+[sub_resource type="Animation" id="Animation_7fjo1"]
+resource_name = "down"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.995),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.361, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4s7f1"]
+resource_name = "down_speed"
+length = 0.5333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5328),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.361, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xjnrb"]
+resource_name = "up"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.361, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ha5m0"]
+resource_name = "up_speed"
+length = 0.5333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5328),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.361, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwf13"]
+_data = {
+"down": SubResource("Animation_7fjo1"),
+"down_speed": SubResource("Animation_4s7f1"),
+"up": SubResource("Animation_xjnrb"),
+"up_speed": SubResource("Animation_ha5m0")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6e3gt"]
+_data = {
+"1_energy_ready": ExtResource("5_46sdm")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gx42j"]
+size = Vector3(1, 1.79504, 1)
+
+[sub_resource type="Animation" id="Animation_6nvcy"]
+resource_name = "startEngine"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0956203, 0.352065, 0.852031), Vector3(0.0956203, 0.261689, 0.833079), Vector3(0.0956203, -0.325758, 0.822706)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.720157, 0, 0), Vector3(-1.03485, 0, 0), Vector3(-1.13035, 0, 0), Vector3(-1.5413, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jdfg"]
+_data = {
+"startEngine": SubResource("Animation_6nvcy")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h2eig"]
+size = Vector3(1, 1.33008, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3bfj"]
+size = Vector3(0.0372391, 0.0382767, 0.0641022)
+
+[sub_resource type="Animation" id="Animation_2ot4l"]
+resource_name = "MusicPressButtonPress"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.000825405, 0.0619513, -0.00306237), Vector3(-0.0019635, 0.0551308, -0.00306237)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2hrd"]
+_data = {
+"MusicPressButtonPress": SubResource("Animation_2ot4l")
+}
+
+[sub_resource type="Animation" id="Animation_j63at"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.000611544, 0.0401554, -0.00306237), Vector3(-0.0313958, 0.0539548, -0.00306237)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_braws"]
+_data = {
+"open": SubResource("Animation_j63at")
+}
+
+[sub_resource type="Animation" id="Animation_6njx3"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.000611544, 0.0401554, -0.00306237), Vector3(-0.0313958, 0.0539548, -0.00306237)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0y2cb"]
+_data = {
+"open": SubResource("Animation_6njx3")
+}
+
+[sub_resource type="Animation" id="Animation_2ix4a"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.000611544, 0.0401554, -0.00306237), Vector3(-0.0313958, 0.0539548, -0.00306237)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2wc2"]
+_data = {
+"open": SubResource("Animation_2ix4a")
+}
+
+[sub_resource type="Animation" id="Animation_rvu0k"]
+resource_name = "fr0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2331, 0.4662, 0.6993, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.004, 0), Vector3(-0.00849509, 0.00425112, 0), Vector3(-0.011, 0.004, 0), Vector3(-0.012, 0.004, 0), Vector3(-0.012, 0.00399995, -0.00605556)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.232833, 0.6993, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2.47135, 0), Vector3(0, -4.02473, 0), Vector3(0, -5.11556, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_myf6y"]
+_data = {
+"fr0": SubResource("Animation_rvu0k")
+}
+
+[sub_resource type="Animation" id="Animation_rnv6f"]
+resource_name = "fr1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../fusionRotate1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.004, 0), Vector3(0, 0.00399995, 0.00318418), Vector3(0, 0.00399995, 0.00419731), Vector3(0, 0.00399995, 0.00977881), Vector3(-0.00678265, 0.00399995, 0.00782304), Vector3(-0.00932872, 0.00399995, 0.00586728), Vector3(-0.00621915, 0.00399995, -0.00181048), Vector3(-0.00310957, 0.00399995, -0.00379384), Vector3(0, 0.00399995, -0.0028916)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../fusionRotate1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -5.00037, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhvti"]
+_data = {
+"fr1": SubResource("Animation_rnv6f")
+}
+
+[sub_resource type="Animation" id="Animation_lg48h"]
+resource_name = "fr2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../fusionRotate2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.533333, 0.666667, 0.866667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.01, 0), Vector3(-0.001, 0.01, 0.003), Vector3(-0.0128821, 0.00999999, -0.00334373), Vector3(-0.00760937, 0.00999999, -0.00238838), Vector3(-0.00303459, 0.00999999, -0.00337515), Vector3(0, 0.01, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../fusionRotate2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -5.11381, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cqsee"]
+_data = {
+"fr2": SubResource("Animation_lg48h")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxnhx"]
+size = Vector3(1, 1.85828, 1)
+
+[sub_resource type="Animation" id="Animation_gcora"]
+resource_name = "fusionReady"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.716246, 0.611661, -0.0667608), Vector3(1.3617, 0.815328, -0.027935)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r31l"]
+_data = {
+"fusionReady": SubResource("Animation_gcora")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sg8m7"]
+size = Vector3(0.04, 0.585, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pp51p"]
+size = Vector3(1, 2.06458, 1)
+
+[sub_resource type="Animation" id="Animation_hntui"]
+resource_name = "FirstAnim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.03333, 2.03333, 3.16667, 4.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.45726, 0.889982, 0.0016734), Vector3(3.61777, 0.889982, 1.03544), Vector3(2.72231, 0.889982, 2.13812), Vector3(-0.0652497, 0.889982, 2.81158), Vector3(-2.94673, 0.889982, 2.81158), Vector3(-6.87643, 0.889982, -0.670185), Vector3(-6.87643, 0.889982, 0.419923)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.03333, 2.03333, 3.16667, 3.6, 4.2, 4.53333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, -0.813323, 0), Vector3(0, -0.630378, 0), Vector3(0, -1.59872, 0), Vector3(0, -1.59872, 0), Vector3(0, -3.02815, 0), Vector3(0, -0.96714, 0), Vector3(0, -0.235458, 0), Vector3(0, -0.235458, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xbyt"]
+_data = {
+"FirstAnim": SubResource("Animation_hntui")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gkrco"]
+size = Vector3(1.05078, 1, 2.02393)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_duc7r")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fcrsm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.00294, 0, 0, 0, 0.102663, 0, 0, 0, 0.533492, -2.02222, 1.07062, -3.3096)
+mesh = SubResource("BoxMesh_m0mxb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7jo6a")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.00294, 0, 0, 0, 0.102663, 0, 0, 0, 0.434721, -2.08396, 1.43187, -4.05939)
+mesh = SubResource("BoxMesh_m0mxb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7ufsk")
+
+[node name="camArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.29406)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_gnv4b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="camArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0147095, 0.50591, 0.365479)
+shape = SubResource("BoxShape3D_4m876")
+
+[node name="setting_cam" type="Camera3D" parent="camArea"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.005, 1.65, 0.317028)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="camArea/setting_cam"]
+libraries = {
+"": SubResource("AnimationLibrary_03o6b")
+}
+
+[node name="gameRoom" parent="." instance=ExtResource("1_j6ya8")]
+script = ExtResource("5_om0u1")
+
+[node name="centerObject" parent="gameRoom" instance=ExtResource("4_ncf5p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.361, 0)
+
+[node name="centerObjectAnim" type="AnimationPlayer" parent="gameRoom/centerObject"]
+libraries = {
+"": SubResource("AnimationLibrary_dwf13")
+}
+
+[node name="EngineReadyAnim" type="AnimationPlayer" parent="gameRoom"]
+libraries = {
+"engineReady": SubResource("AnimationLibrary_6e3gt")
+}
+
+[node name="StartEngine" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135631, 0.464531, -2.84239)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartEngine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.397522, 0)
+shape = SubResource("BoxShape3D_gx42j")
+
+[node name="startEngineObject" parent="StartEngine" instance=ExtResource("7_uiylh")]
+transform = Transform3D(1, 0, 0, 0, 0.751702, 0.659503, 0, -0.659503, 0.751702, 0.0956203, 0.352065, 0.852031)
+
+[node name="EngineShow_AnimationPlayer" type="AnimationPlayer" parent="StartEngine/startEngineObject"]
+libraries = {
+"": SubResource("AnimationLibrary_8jdfg")
+}
+
+[node name="StartEngineSound" type="AudioStreamPlayer3D" parent="StartEngine"]
+stream = ExtResource("10_obgyj")
+bus = &"Effect"
+
+[node name="fusionReadyx3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18035, 0, -0.014511)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.585471, 0)
+shape = SubResource("BoxShape3D_h2eig")
+
+[node name="Sounds" type="Node3D" parent="fusionReadyx3"]
+
+[node name="musicPlus" type="StaticBody3D" parent="fusionReadyx3/Sounds" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461067, 1.09082, 0.073661)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/Sounds/musicPlus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0639381, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="music_volume_plus" parent="fusionReadyx3/Sounds/musicPlus" instance=ExtResource("12_pu7r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000825405, 0.0619513, -0.00306237)
+
+[node name="MusicPlus" type="AnimationPlayer" parent="fusionReadyx3/Sounds/musicPlus/music_volume_plus"]
+libraries = {
+"": SubResource("AnimationLibrary_d2hrd")
+}
+
+[node name="musicMinus" type="StaticBody3D" parent="fusionReadyx3/Sounds" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404128, 1.09082, 0.073661)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/Sounds/musicMinus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="music_volume_minus" parent="fusionReadyx3/Sounds/musicMinus" instance=ExtResource("12_pu7r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000611544, 0.0401554, -0.00306237)
+
+[node name="MusicMinus" type="AnimationPlayer" parent="fusionReadyx3/Sounds/musicMinus/music_volume_minus"]
+libraries = {
+"": SubResource("AnimationLibrary_braws")
+}
+
+[node name="EffectPlus" type="StaticBody3D" parent="fusionReadyx3/Sounds" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461067, 1.09082, -0.00178661)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/Sounds/EffectPlus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="EffectPlus_volume_plus" parent="fusionReadyx3/Sounds/EffectPlus" instance=ExtResource("12_pu7r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000825405, 0.0619513, -0.00306237)
+
+[node name="EffectPlus" type="AnimationPlayer" parent="fusionReadyx3/Sounds/EffectPlus/EffectPlus_volume_plus"]
+libraries = {
+"": SubResource("AnimationLibrary_d2hrd")
+}
+
+[node name="EffectMinus" type="StaticBody3D" parent="fusionReadyx3/Sounds" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.405014, 1.09082, -0.00178661)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/Sounds/EffectMinus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="EffectMinus_volume_minus" parent="fusionReadyx3/Sounds/EffectMinus" instance=ExtResource("12_pu7r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000611544, 0.0401554, -0.00306237)
+
+[node name="EffectMinus" type="AnimationPlayer" parent="fusionReadyx3/Sounds/EffectMinus/EffectMinus_volume_minus"]
+libraries = {
+"": SubResource("AnimationLibrary_braws")
+}
+
+[node name="VoicePlus" type="StaticBody3D" parent="fusionReadyx3/Sounds" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.461067, 1.09082, -0.0771994)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/Sounds/VoicePlus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="VoicePlus_volume_plus" parent="fusionReadyx3/Sounds/VoicePlus" instance=ExtResource("12_pu7r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000825405, 0.0619513, -0.00306237)
+
+[node name="VoicePlus" type="AnimationPlayer" parent="fusionReadyx3/Sounds/VoicePlus/VoicePlus_volume_plus"]
+libraries = {
+"": SubResource("AnimationLibrary_d2hrd")
+}
+
+[node name="VoiceMinus" type="StaticBody3D" parent="fusionReadyx3/Sounds" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.405254, 1.09082, -0.0771994)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/Sounds/VoiceMinus"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="VoiceMinus_volume_minus" parent="fusionReadyx3/Sounds/VoiceMinus" instance=ExtResource("12_pu7r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000611544, 0.0401554, -0.00306237)
+
+[node name="VoiceMinus" type="AnimationPlayer" parent="fusionReadyx3/Sounds/VoiceMinus/VoiceMinus_volume_minus"]
+libraries = {
+"": SubResource("AnimationLibrary_braws")
+}
+
+[node name="FusionReadyx3" type="Node3D" parent="fusionReadyx3"]
+
+[node name="FusionReadyx0" type="StaticBody3D" parent="fusionReadyx3/FusionReadyx3" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.336087, 1.03382, 0.0765018)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/FusionReadyx3/FusionReadyx0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="fusionReadyX3Object" parent="fusionReadyx3/FusionReadyx3/FusionReadyx0" instance=ExtResource("12_r6idi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000611544, 0.0401554, -0.00306237)
+
+[node name="fr0Anim" type="AnimationPlayer" parent="fusionReadyx3/FusionReadyx3/FusionReadyx0/fusionReadyX3Object"]
+libraries = {
+"": SubResource("AnimationLibrary_braws")
+}
+
+[node name="FusionReadyx1" type="StaticBody3D" parent="fusionReadyx3/FusionReadyx3" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.336087, 1.03382, -0.00317428)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/FusionReadyx3/FusionReadyx1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="fusionReadyX3Object" parent="fusionReadyx3/FusionReadyx3/FusionReadyx1" instance=ExtResource("12_r6idi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000611544, 0.0401554, -0.00306237)
+
+[node name="fr1Anim" type="AnimationPlayer" parent="fusionReadyx3/FusionReadyx3/FusionReadyx1/fusionReadyX3Object"]
+libraries = {
+"": SubResource("AnimationLibrary_0y2cb")
+}
+
+[node name="FusionReadyx2" type="StaticBody3D" parent="fusionReadyx3/FusionReadyx3" groups=["check"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.336087, 1.03382, -0.0829323)
+constant_linear_velocity = Vector3(-0.118531, 0.0709392, 0.0689469)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionReadyx3/FusionReadyx3/FusionReadyx2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0490133, 0)
+shape = SubResource("BoxShape3D_c3bfj")
+
+[node name="fusionReadyX3Object" parent="fusionReadyx3/FusionReadyx3/FusionReadyx2" instance=ExtResource("12_r6idi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000611544, 0.0401554, -0.00306237)
+
+[node name="fr2Anim" type="AnimationPlayer" parent="fusionReadyx3/FusionReadyx3/FusionReadyx2/fusionReadyX3Object"]
+libraries = {
+"": SubResource("AnimationLibrary_p2wc2")
+}
+
+[node name="activeFusion" type="Node3D" parent="fusionReadyx3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.966833, 1.37854, -0.0138362)
+
+[node name="fusionRotate0" type="Node3D" parent="fusionReadyx3/activeFusion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004, 0)
+
+[node name="fusion_rotate" parent="fusionReadyx3/activeFusion/fusionRotate0" instance=ExtResource("11_85lms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763353, -0.02391, 0)
+
+[node name="fr0" type="AnimationPlayer" parent="fusionReadyx3/activeFusion/fusionRotate0/fusion_rotate"]
+libraries = {
+"": SubResource("AnimationLibrary_myf6y")
+}
+
+[node name="fusionRotate1" type="Node3D" parent="fusionReadyx3/activeFusion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004, 0)
+
+[node name="fusion_rotate" parent="fusionReadyx3/activeFusion/fusionRotate1" instance=ExtResource("11_85lms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11901, -0.02391, 0)
+
+[node name="fr1" type="AnimationPlayer" parent="fusionReadyx3/activeFusion/fusionRotate1/fusion_rotate"]
+libraries = {
+"": SubResource("AnimationLibrary_mhvti")
+}
+
+[node name="fusionRotate2" type="Node3D" parent="fusionReadyx3/activeFusion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="fusion_rotate" parent="fusionReadyx3/activeFusion/fusionRotate2" instance=ExtResource("11_85lms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158239, -0.02391, 0)
+
+[node name="fr2" type="AnimationPlayer" parent="fusionReadyx3/activeFusion/fusionRotate2/fusion_rotate"]
+libraries = {
+"": SubResource("AnimationLibrary_cqsee")
+}
+
+[node name="show" type="OmniLight3D" parent="fusionReadyx3/activeFusion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00224125, 0.487467, 0)
+omni_range = 1.1323
+
+[node name="frs" type="AudioStreamPlayer3D" parent="fusionReadyx3/activeFusion"]
+stream = ExtResource("12_kij7n")
+bus = &"Effect"
+
+[node name="fusionStart" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16852, 0.451377, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fusionStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429138, 0)
+shape = SubResource("BoxShape3D_uxnhx")
+
+[node name="fusionReady" parent="fusionStart" instance=ExtResource("10_3ah3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.716246, 0.611661, -0.0667608)
+
+[node name="fusionReady_AnimationPlayer" type="AnimationPlayer" parent="fusionStart/fusionReady"]
+libraries = {
+"": SubResource("AnimationLibrary_8r31l")
+}
+
+[node name="fusionReadySound" type="AudioStreamPlayer3D" parent="fusionStart"]
+stream = ExtResource("12_6rpka")
+volume_db = -30.0
+bus = &"Effect"
+
+[node name="settingsx7" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.24228)
+collision_layer = 2
+collision_mask = 2
+
+[node name="settingsObject" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213597, 1.29446, -1.48583)
+
+[node name="settingsObjectAnim" type="AnimationPlayer" parent="settingsx7/settingsObject"]
+
+[node name="settingsObject1Body" type="StaticBody3D" parent="settingsx7/settingsObject"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject/settingsObject1Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="settingsObject2" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.247309, 1.2478, -1.37378)
+
+[node name="settingsObject2Anim" type="AnimationPlayer" parent="settingsx7/settingsObject2"]
+root_node = NodePath("../../settingsObject")
+
+[node name="settingsObject2Body" type="StaticBody3D" parent="settingsx7/settingsObject2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject2/settingsObject2Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="settingsObject3" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.296311, 1.20122, -1.2585)
+
+[node name="settingsObject3Anim" type="AnimationPlayer" parent="settingsx7/settingsObject3"]
+root_node = NodePath("../../settingsObject")
+
+[node name="settingsObject3Body" type="StaticBody3D" parent="settingsx7/settingsObject3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject3/settingsObject3Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="settingsObject4" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.336249, 1.13817, -1.14723)
+
+[node name="settingsObject4Anim" type="AnimationPlayer" parent="settingsx7/settingsObject4"]
+root_node = NodePath("../../settingsObject")
+
+[node name="settingsObject4Body" type="StaticBody3D" parent="settingsx7/settingsObject4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject4/settingsObject4Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="settingsObject5" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.376434, 1.09935, -1.03045)
+
+[node name="settingsObject5Anim" type="AnimationPlayer" parent="settingsx7/settingsObject5"]
+root_node = NodePath("../../settingsObject")
+
+[node name="settingsObject5Body" type="StaticBody3D" parent="settingsx7/settingsObject5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject5/settingsObject5Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="settingsObject6" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.425959, 1.04607, -0.919708)
+
+[node name="settingsObject6Anim" type="AnimationPlayer" parent="settingsx7/settingsObject6"]
+root_node = NodePath("../../settingsObject")
+
+[node name="settingsObject6Body" type="StaticBody3D" parent="settingsx7/settingsObject6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject6/settingsObject6Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="settingsObject7" parent="settingsx7" instance=ExtResource("11_er5ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477738, 0.991559, -0.806207)
+
+[node name="settingsObject7Anim" type="AnimationPlayer" parent="settingsx7/settingsObject7"]
+root_node = NodePath("../../settingsObject")
+
+[node name="settingsObject7Body" type="StaticBody3D" parent="settingsx7/settingsObject7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7/settingsObject7/settingsObject7Body"]
+transform = Transform3D(1, 0, 0, 0, 0.913545, -0.406737, 0, 0.406737, 0.913545, 0, 0, 0)
+shape = SubResource("BoxShape3D_sg8m7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="settingsx7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.854284, 0)
+shape = SubResource("BoxShape3D_pp51p")
+
+[node name="extra" type="Node3D" parent="."]
+
+[node name="insideSound" type="AudioStreamPlayer3D" parent="extra"]
+stream = ExtResource("4_oombf")
+volume_db = -10.0
+bus = &"Effect"
+
+[node name="startEngine" type="AudioStreamPlayer3D" parent="extra"]
+stream = ExtResource("7_expo7")
+bus = &"Effect"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="extra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.85309, 0)
+light_energy = 13.5
+omni_range = 16.917
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="extra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5482, 2.14426, 8.67259)
+light_energy = 5.745
+omni_range = 5.912
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="extra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5482, 2.14426, 5.76616)
+light_energy = 1.34
+omni_range = 5.912
+
+[node name="energyDC" parent="." instance=ExtResource("19_e40sb")]
+transform = Transform3D(1.36192, 0, -1.36192, 0, 1.92604, 0, 1.36192, 0, 1.36192, 0.81826, 1.48003, 0.7833)
+
+[node name="fps" parent="." instance=ExtResource("2_pg0ns")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 8.59783, 0.105446, -0.00921571)
+collision_layer = 2
+collision_mask = 3
+
+[node name="pleh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.812002, 0, 0)
+script = ExtResource("20_1rn7a")
+
+[node name="LifeMe" parent="pleh" instance=ExtResource("16_6njx3")]
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 4.45726, 0.889982, 0.0016734)
+
+[node name="hubAnim" type="AnimationPlayer" parent="pleh/LifeMe"]
+libraries = {
+"": SubResource("AnimationLibrary_3xbyt")
+}
+
+[node name="FirstAnimStartArea" type="Area3D" parent="pleh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71446, 0.380044, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pleh/FirstAnimStartArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0253906, 0, -0.00366211)
+shape = SubResource("BoxShape3D_gkrco")
+
+[node name="first" type="AudioStreamPlayer3D" parent="pleh/FirstAnimStartArea"]
+
+[node name="second" type="AudioStreamPlayer3D" parent="pleh/FirstAnimStartArea"]
+stream = ExtResource("22_nkxp6")
+bus = &"Voice"
+
+[connection signal="body_entered" from="camArea" to="camArea" method="_on_body_entered"]
+[connection signal="body_exited" from="camArea" to="camArea" method="_on_body_exited"]
+[connection signal="animation_finished" from="gameRoom/centerObject/centerObjectAnim" to="." method="_on_center_object_anim_animation_finished"]
+[connection signal="body_entered" from="StartEngine" to="." method="_on_start_engine_body_entered"]
+[connection signal="body_exited" from="StartEngine" to="." method="_on_start_engine_body_exited"]
+[connection signal="body_entered" from="fusionReadyx3" to="." method="_on_fusion_readyx_3_body_entered"]
+[connection signal="body_exited" from="fusionReadyx3" to="." method="_on_fusion_readyx_3_body_exited"]
+[connection signal="animation_finished" from="fusionReadyx3/FusionReadyx3/FusionReadyx0/fusionReadyX3Object/fr0Anim" to="." method="_on_fr_0_anim_animation_finished"]
+[connection signal="animation_finished" from="fusionReadyx3/FusionReadyx3/FusionReadyx1/fusionReadyX3Object/fr1Anim" to="." method="_on_fr_1_anim_animation_finished"]
+[connection signal="animation_finished" from="fusionReadyx3/FusionReadyx3/FusionReadyx2/fusionReadyX3Object/fr2Anim" to="." method="_on_fr_2_anim_animation_finished"]
+[connection signal="body_entered" from="fusionStart" to="." method="_on_fusion_start_body_entered"]
+[connection signal="body_exited" from="fusionStart" to="." method="_on_fusion_start_body_exited"]
+[connection signal="animation_finished" from="fusionStart/fusionReady/fusionReady_AnimationPlayer" to="." method="_on_fusion_ready_animation_player_animation_finished"]
+[connection signal="body_entered" from="settingsx7" to="." method="_on_settingsx_7_body_entered"]
+[connection signal="body_exited" from="settingsx7" to="." method="_on_settingsx_7_body_exited"]
+[connection signal="finished" from="extra/insideSound" to="." method="_on_inside_sound_finished"]
+[connection signal="finished" from="extra/startEngine" to="." method="_on_start_engine_finished"]
+[connection signal="animation_finished" from="pleh/LifeMe/hubAnim" to="pleh" method="_on_hub_anim_animation_finished"]
+[connection signal="body_entered" from="pleh/FirstAnimStartArea" to="pleh" method="_on_first_anim_start_area_body_entered"]
+[connection signal="body_exited" from="pleh/FirstAnimStartArea" to="pleh" method="_on_first_anim_start_area_body_exited"]
+[connection signal="finished" from="pleh/FirstAnimStartArea/first" to="pleh" method="_on_first_finished"]
+[connection signal="finished" from="pleh/FirstAnimStartArea/second" to="pleh" method="_on_second_finished"]
