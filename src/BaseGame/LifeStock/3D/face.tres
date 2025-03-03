@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b6hqk1dhtprps"]
+
+[ext_resource type="Texture2D" uid="uid://cm5li43xxligp" path="res://BaseGame/LifeStock/3D/CubeChan_bg.png" id="1_ucgcj"]
+
+[resource]
+resource_name = "face"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_ucgcj")

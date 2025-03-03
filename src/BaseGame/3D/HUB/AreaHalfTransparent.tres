@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cb3rd5vex4dif"]
+
+[resource]
+resource_name = "AreaHalfTransparent"
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.529412, 0.141176, 0.701961, 0.164706)

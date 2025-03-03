@@ -1,0 +1,15 @@
+Base Game Hub: # burasi oyunun baslangic kismi main menu olayi yerine 3d sahne var burasi youtube kanalimin gecti yer
+	# ozey hikaye ben robot gelistiren biriyim kendi bilincimi robota aktariyorum oyuncularda benim gelistirdigim robotlar oluyorlar ve gonderdigim sanal dunyada test ediliyorlar!
+	
+	gonderdigim oyunda ki gibi mekanikler
+	hub bolgesinde olan sahne bir uzay araci 
+	1: karakter portal kisminin onunde duruyor portal kapasi kapali 
+	2: baslangic konusmasi "seslendirme mevzusunu ben yapicam"
+		1: isim ile hitap
+		2: kisa aciklama
+	1: uzay aracinin aktif olmasi icin -> oyuna girdinde resimde sira ile gozukuyor
+		1:enerji fuzyon -> 3 obje e harfi basiyorsun 
+		2:engine ready -> sistem baslamasi icin : isiklar devreye giriyor ve sahnedeki karakterin isigi sonuyor
+		3:engine start   -> kisi oyunu baslaticak portala enerji aktarmak icin kolu cekiyor ve portalin icine giriyor
+	3: engine baslatip portala girince portal kapisi kapaniyor ve karakter onune gelip son konusma yapiyor konusma bitince asil oyun sahnesi basliyor
+	4: buradan sonrasi farkli farkli oyunlar ornek her oyunda bu baslangic kismini default olarak kullanmak icin tutulucak

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cuxrlndsv82i8"]
+
+[ext_resource type="Texture2D" uid="uid://c27xhase6b3ph" path="res://BaseGame/3D/HUB/Cardis_board0.png" id="1_gvaxg"]
+
+[resource]
+resource_name = "board"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_gvaxg")

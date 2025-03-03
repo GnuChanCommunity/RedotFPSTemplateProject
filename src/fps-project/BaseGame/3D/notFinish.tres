@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://xt7155cpluyt"]
-
-[ext_resource type="Texture2D" uid="uid://byjaxjy643cgt" path="res://BaseGame/3D/gameRoom_notfinish.png" id="1_gavxt"]
-
-[resource]
-albedo_texture = ExtResource("1_gavxt")
-emission_enabled = true
-emission_texture = ExtResource("1_gavxt")

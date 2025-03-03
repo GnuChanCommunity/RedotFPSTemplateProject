@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ci570i7ooj80h"]
+
+[resource]
+resource_name = "center"
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.905882, 0.905882, 0.905882, 0.137255)

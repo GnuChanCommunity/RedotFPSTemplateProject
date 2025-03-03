@@ -1,0 +1,413 @@
+[gd_scene load_steps=24 format=3 uid="uid://cns1uy01wn0kj"]
+
+[ext_resource type="Script" path="res://BaseGame/FPS/fps.gd" id="1_ge6oy"]
+[ext_resource type="Texture2D" uid="uid://cu15jqtsbg4t3" path="res://BaseGame/Images/cursor0.png" id="2_6bq6q"]
+[ext_resource type="Texture2D" uid="uid://dvflpekblut54" path="res://BaseGame/Images/cursor1.png" id="3_y2nbq"]
+[ext_resource type="Script" path="res://BaseGame/Scripts/settings.gd" id="4_2e1d4"]
+[ext_resource type="Script" path="res://BaseGame/Scripts/console_win.gd" id="5_agy71"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwnqa"]
+radius = 0.225
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bm48d"]
+radius = 0.215
+height = 0.895
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fvg5h"]
+radius = 0.215
+height = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oht2h"]
+shading_mode = 0
+albedo_color = Color(0.916417, 0.472688, 0.543104, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qqwbl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqwbl"]
+shading_mode = 0
+albedo_color = Color(0.66923, 0.211426, 0.972398, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ppju"]
+shading_mode = 0
+albedo_color = Color(0.869707, 0.499802, 0.288593, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hslgj"]
+shading_mode = 0
+albedo_color = Color(0.602592, 0.157847, 0.254453, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7045e"]
+shading_mode = 0
+albedo_color = Color(0.800962, 0.190683, 0.411689, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpbiu"]
+shading_mode = 0
+albedo_color = Color(0.17648, 0.509571, 0.456537, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0wpq"]
+shading_mode = 0
+albedo_color = Color(0.435833, 0.520576, 0.24723, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy4b7"]
+shading_mode = 0
+albedo_color = Color(0.0835371, 0.457642, 0.552589, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63oec"]
+shading_mode = 0
+albedo_color = Color(0.379116, 0.464699, 0.445347, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hx18i"]
+texture = ExtResource("2_6bq6q")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_unico"]
+texture = ExtResource("3_y2nbq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eobx"]
+bg_color = Color(0.170968, 0.0297881, 0.280621, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vvf2"]
+bg_color = Color(0.326543, 0.0382518, 0.577341, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev6us"]
+bg_color = Color(0.32549, 0.0392157, 0.576471, 1)
+
+[node name="fps" type="CharacterBody3D"]
+script = ExtResource("1_ge6oy")
+
+[node name="stand" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993943, 0)
+shape = SubResource("CapsuleShape3D_xwnqa")
+
+[node name="crawling" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.445113, 0)
+shape = SubResource("CapsuleShape3D_bm48d")
+
+[node name="duck" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643902, 0)
+shape = SubResource("CapsuleShape3D_fvg5h")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.966, 0)
+
+[node name="standCam" type="Camera3D" parent="head"]
+fov = 90.0
+
+[node name="hitRay" type="RayCast3D" parent="head/standCam"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+
+[node name="hand0" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand0"]
+transform = Transform3D(0.193973, 0, 0, 0, 0.193973, 0, 0, 0, 0.193973, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_oht2h")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand1" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand1"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qqwbl")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand2" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand2"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6ppju")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand3" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand3"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hslgj")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand4" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand4"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_7045e")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand5" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand5"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_lpbiu")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand6" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand6"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_g0wpq")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand7" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand7"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_sy4b7")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand8" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand8"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_63oec")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="hand9" type="Node3D" parent="head/standCam/hitRay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand9"]
+transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qqwbl")
+mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="headRay" type="Node3D" parent="."]
+
+[node name="r0" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.970088, 0.235381, -0.0593639, -0.242752, 0.940634, -0.237231, 0, 0.244546, 0.969638, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r1" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.970088, 0.235497, 0.0589037, -0.242752, 0.941096, 0.235392, 0, -0.24265, 0.970114, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r2" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.970088, 0.242731, -0.00314787, -0.242752, 0.970007, -0.0125796, 0, 0.0129674, 0.999916, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r3" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.9698, -0.236497, 0.0596454, 0.243903, 0.940354, -0.237161, 0, 0.244546, 0.969638, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r4" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.9698, -0.236614, -0.059183, 0.243903, 0.940816, 0.235322, 0, -0.24265, 0.970114, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r5" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.9698, -0.243882, 0.00316279, 0.243903, 0.969718, -0.0125758, 2.2608e-10, 0.0129674, 0.999916, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r6" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00150747, 0.967231, -0.253893, 0.000374878, 0.253893, 0.967232, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="r7" type="RayCast3D" parent="headRay"]
+transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00149909, 0.96836, 0.249552, -0.000407124, -0.249552, 0.968361, 0, 0.885626, 0)
+target_position = Vector3(0, 1.295, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cursor" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hx18i")
+
+[node name="cursor_raycast" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_unico")
+
+[node name="settings" type="Window" parent="UI"]
+position = Vector2i(315, 81)
+size = Vector2i(730, 530)
+visible = false
+script = ExtResource("4_2e1d4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/settings"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/settings/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MusicVolume" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = " Music Volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.5
+step = 0.001
+value = 1.0
+
+[node name="sep" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/MusicVolume"]
+layout_mode = 2
+text = " "
+
+[node name="EffectVolume" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/EffectVolume"]
+layout_mode = 2
+text = " Effect Volume"
+
+[node name="EffectVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/EffectVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.5
+step = 0.001
+value = 1.0
+
+[node name="sep2" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/EffectVolume"]
+layout_mode = 2
+text = " "
+
+[node name="VoiceVolume" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume"]
+layout_mode = 2
+text = " Voice Volume"
+
+[node name="VoiceVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.5
+step = 0.001
+value = 1.0
+
+[node name="sep3" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume"]
+layout_mode = 2
+text = " "
+
+[node name="mouseSpeed" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed"]
+layout_mode = 2
+text = " Mouse Speed"
+
+[node name="mouseSpeedSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 0.8
+step = 0.1
+value = 0.5
+
+[node name="sep4" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed"]
+layout_mode = 2
+text = " "
+
+[node name="headShake" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/headShake"]
+layout_mode = 2
+text = " Head Shake"
+
+[node name="headShakeCheckBox" type="CheckBox" parent="UI/settings/ScrollContainer/VBoxContainer/headShake"]
+layout_mode = 2
+button_pressed = true
+
+[node name="consoleWin" type="Window" parent="UI"]
+auto_translate_mode = 1
+position = Vector2i(270, 36)
+size = Vector2i(730, 530)
+visible = false
+script = ExtResource("5_agy71")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/consoleWin"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/consoleWin/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="output" type="TextEdit" parent="UI/consoleWin/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_styles/read_only = SubResource("StyleBoxFlat_7eobx")
+editable = false
+wrap_mode = 1
+
+[node name="console" type="LineEdit" parent="UI/consoleWin/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_5vvf2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ev6us")
+
+[connection signal="close_requested" from="UI/settings" to="UI/settings" method="_on_close_requested"]
+[connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/MusicVolume/MusicVolumeSlider" to="UI/settings" method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/EffectVolume/EffectVolumeSlider" to="UI/settings" method="_on_effect_volume_slider_value_changed"]
+[connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume/VoiceVolumeSlider" to="UI/settings" method="_on_voice_volume_slider_value_changed"]
+[connection signal="changed" from="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed/mouseSpeedSlider" to="UI/settings" method="_on_mouse_speed_slider_changed"]
+[connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed/mouseSpeedSlider" to="UI/settings" method="_on_mouse_speed_slider_value_changed"]
+[connection signal="toggled" from="UI/settings/ScrollContainer/VBoxContainer/headShake/headShakeCheckBox" to="UI/settings" method="_on_head_shake_check_box_toggled"]
+[connection signal="close_requested" from="UI/consoleWin" to="UI/consoleWin" method="_on_close_requested"]

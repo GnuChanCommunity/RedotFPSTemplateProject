@@ -1,0 +1,663 @@
+[gd_scene load_steps=54 format=3 uid="uid://q66cixqomdbw"]
+
+[ext_resource type="PackedScene" uid="uid://cns1uy01wn0kj" path="res://BaseGame/FPS/fps.tscn" id="1_k2el7"]
+[ext_resource type="Script" path="res://BaseGame/Scripts/mainHub.gd" id="1_y2e7l"]
+[ext_resource type="Environment" uid="uid://ofuuhkoyp2b0" path="res://DefaultEnviroment.tres" id="2_uwbpg"]
+[ext_resource type="PackedScene" uid="uid://dvwhyqm754wib" path="res://BaseGame/3D/HUB/centerObject.glb" id="3_66bg3"]
+[ext_resource type="PackedScene" uid="uid://ilolfoh8j4ty" path="res://BaseGame/3D/HUB/Cardis.glb" id="3_oxgc4"]
+[ext_resource type="PackedScene" uid="uid://def2vuig6mpcu" path="res://BaseGame/LifeStock/GC.tscn" id="4_wwidp"]
+[ext_resource type="PackedScene" uid="uid://chiaxnunr066g" path="res://BaseGame/3D/HUB/energyDC.glb" id="5_wpbnn"]
+[ext_resource type="AudioStream" uid="uid://dxtralxekspd0" path="res://BaseGame/Sound/Effect/insidesound.ogg" id="6_h2bg8"]
+[ext_resource type="AudioStream" uid="uid://buc0rp12u31wq" path="res://BaseGame/Sound/Effect/idl.ogg" id="7_kqhhy"]
+[ext_resource type="PackedScene" uid="uid://0bad4qss4imh" path="res://BaseGame/3D/HUB/fusionReady.glb" id="8_0cqa6"]
+[ext_resource type="PackedScene" uid="uid://c0jjntvvs3ckg" path="res://BaseGame/3D/HUB/fusion_rotate.glb" id="9_jus37"]
+[ext_resource type="AudioStream" uid="uid://bn25dieoy7l8g" path="res://BaseGame/Sound/Effect/EnergyReady_normal.ogg" id="9_u7og4"]
+[ext_resource type="PackedScene" uid="uid://ckjh2rbed7o71" path="res://BaseGame/3D/HUB/fusionStart.glb" id="10_ftxng"]
+[ext_resource type="AudioStream" uid="uid://deuoweb5ch6n5" path="res://BaseGame/Sound/Effect/EnergyReady_close.ogg" id="10_y2nqp"]
+[ext_resource type="PackedScene" uid="uid://bbp7fjh2pk2l0" path="res://BaseGame/3D/HUB/startEngineObject.glb" id="11_fvita"]
+[ext_resource type="PackedScene" uid="uid://cbdm3xlepbuoy" path="res://BaseGame/3D/HUB/settingsObject.glb" id="13_w23cv"]
+[ext_resource type="AudioStream" uid="uid://crrpujsfyo6bc" path="res://BaseGame/Sound/Effect/fusionStart.ogg" id="13_xp8bc"]
+[ext_resource type="PackedScene" uid="uid://1g750c78ilj0" path="res://BaseGame/3D/HUB/portal_door.glb" id="15_7ofwr"]
+[ext_resource type="AudioStream" uid="uid://bmentrgfle75r" path="res://BaseGame/Sound/Effect/fusionEnd.ogg" id="15_dp257"]
+[ext_resource type="AudioStream" uid="uid://c0140dacvrytf" path="res://BaseGame/Sound/Effect/EngineStart.ogg" id="18_aa4vf"]
+[ext_resource type="PackedScene" uid="uid://r1mxdf3ebsmf" path="res://BaseGame/3D/HUB/Cardis_portable.glb" id="19_7owue"]
+[ext_resource type="PackedScene" uid="uid://d14f40e66jvbj" path="res://BaseGame/3D/HUB/portalLoading.glb" id="20_sb6j3"]
+[ext_resource type="AudioStream" uid="uid://tsyoxunt4vy3" path="res://BaseGame/Sound/Effect/energyloading.ogg" id="21_rv3ma"]
+[ext_resource type="AudioStream" uid="uid://ckn1usn11iyqj" path="res://BaseGame/Sound/Effect/doorOpen.ogg" id="21_wwlgp"]
+[ext_resource type="AudioStream" uid="uid://bhyn20tb00tus" path="res://BaseGame/Sound/Effect/doorClose.ogg" id="22_cw6x5"]
+[ext_resource type="AudioStream" uid="uid://c3mo8g25kg3ck" path="res://BaseGame/Sound/Effect/portalDoorOpen.ogg" id="22_ghkhe"]
+
+[sub_resource type="Animation" id="Animation_bo3ay"]
+resource_name = "dik"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0794576, 0), Vector3(0, 0.494, 0), Vector3(0, 0.0794576, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bp0iv"]
+_data = {
+"dik": SubResource("Animation_bo3ay")
+}
+
+[sub_resource type="Animation" id="Animation_7xlmc"]
+resource_name = "TalkStart"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.43333, 3.16667, 4.4, 4.73333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-5.61335, -0.0571423, 1.86927), Vector3(-2.38335, -0.0571423, 2.82293), Vector3(1.0405, -0.0571423, 3.49757), Vector3(3.11555, -0.0571423, 1.10439), Vector3(3.67637, -0.0571423, 0.457591), Vector3(4.12503, -0.0571423, -0.0598513)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.43333, 3.16667, 4.4, 4.73333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -2.09354, 0), Vector3(0, -1.63591, 0), Vector3(0, -0.882498, 0), Vector3(0, -0.871221, 0), Vector3(0, -1.00404, 0), Vector3(0, -1.57113, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m6otg"]
+resource_name = "FirtTalk"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8991, 1.7, 2.997),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(4.12503, -0.0571423, -0.0598513), Vector3(2.45892, -0.0571423, 2.11017), Vector3(-0.622774, -0.0571423, 2.98209), Vector3(-5.61335, -0.0571423, 1.86927)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8991, 1.7, 2.33333, 2.76667, 2.997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.57113, 0), Vector3(0, -3.78562, 0), Vector3(0, -4.24988, 0), Vector3(0, -5.07891, 0), Vector3(0, -4.90263, 0), Vector3(0, -4.75253, 0), Vector3(0, -1.57113, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e1ejq"]
+_data = {
+"FirtTalk": SubResource("Animation_m6otg"),
+"TalkStart": SubResource("Animation_7xlmc")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsc6n"]
+size = Vector3(1.54248, 1.39709, 1.42084)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa1x6"]
+size = Vector3(0.115, 0.13, 0.04)
+
+[sub_resource type="Animation" id="Animation_0tgd2"]
+resource_name = "ready0"
+length = 0.6333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6327),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.237954, 1.08144, 0.0588079), Vector3(0.205191, 1.0945, 0.0588079)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jf1i1"]
+_data = {
+"ready0": SubResource("Animation_0tgd2")
+}
+
+[sub_resource type="Animation" id="Animation_cr1jf"]
+resource_name = "ready1"
+length = 0.6333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6327),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.237954, 1.08144, -0.0205402), Vector3(0.205, 1.095, -0.021)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7s3f"]
+_data = {
+"ready1": SubResource("Animation_cr1jf")
+}
+
+[sub_resource type="Animation" id="Animation_tpyta"]
+resource_name = "ready2"
+length = 0.6333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6327),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.237954, 1.08144, -0.0999034), Vector3(0.205, 1.095, -0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3725u"]
+_data = {
+"ready2": SubResource("Animation_tpyta")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uwwtq"]
+size = Vector3(1.23803, 1.56436, 1.39948)
+
+[sub_resource type="Animation" id="Animation_n836k"]
+resource_name = "fsStart"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fusionStart:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.822922, 1.06122, -0.0667735), Vector3(1.41979, 1.30026, -0.0330871)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oa7e4"]
+_data = {
+"fsStart": SubResource("Animation_n836k")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51lxt"]
+size = Vector3(1.50476, 1.14502, 1.3808)
+
+[sub_resource type="Animation" id="Animation_dkov2"]
+resource_name = "EngineStart"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../StartEgineFusion/startEngineObject:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.366667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0126106, 0.882848, 0.502376), Vector3(-0.0126106, 0.865413, 0.490723), Vector3(-0.0126106, 0.75656, 0.4433), Vector3(-0.0126106, 0.605014, 0.437676), Vector3(-0.0126106, 0.125118, 0.449641)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../StartEgineFusion/startEngineObject:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.366667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.808576, 0, 0), Vector3(-0.82854, 0, 0), Vector3(-0.9084, 0, 0), Vector3(-1.02819, 0, 0), Vector3(-1.40752, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cd0tu"]
+_data = {
+"EngineStart": SubResource("Animation_dkov2")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kw8hk"]
+size = Vector3(1.46191, 1.13293, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xt6y7"]
+size = Vector3(0.065, 0.585, 0.045)
+
+[sub_resource type="Animation" id="Animation_dnsns"]
+resource_name = "Ready"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(3.82127, -1.30069, 0), Vector3(3.82127, 0.137981, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7csmj"]
+_data = {
+"Ready": SubResource("Animation_dnsns")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxias"]
+size = Vector3(3.29711, 1, 1.07922)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a5vey"]
+size = Vector3(1, 2.35559, 0.381714)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grwre"]
+size = Vector3(0.637207, 0.0418701, 2.38403)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6hg1"]
+size = Vector3(2.06683, 1.01904, 1.40466)
+
+[node name="MainHUB" type="Node3D"]
+script = ExtResource("1_y2e7l")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_uwbpg")
+
+[node name="Cardis" parent="." instance=ExtResource("3_oxgc4")]
+
+[node name="Cardis_portable" parent="Cardis" instance=ExtResource("19_7owue")]
+transform = Transform3D(-1.0845, 0, -8.74228e-08, 0, 1.01686, 0, 9.48099e-08, 0, -1, 0.0148798, -0.292261, -10.3032)
+
+[node name="centerObject" parent="Cardis" instance=ExtResource("3_66bg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0794576, 0)
+
+[node name="COAnim" type="AnimationPlayer" parent="Cardis/centerObject"]
+libraries = {
+"": SubResource("AnimationLibrary_bp0iv")
+}
+
+[node name="energyDC" parent="Cardis" instance=ExtResource("5_wpbnn")]
+transform = Transform3D(1.41507, 0, -1.41507, 0, 2.00122, 0, 1.41507, 0, 1.41507, 0.823602, 1.47309, 0.784204)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Cardis"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21596, 1.68539, -0.0272966)
+
+[node name="GC" parent="." instance=ExtResource("4_wwidp")]
+transform = Transform3D(-0.000333711, 0, -1, 0, 1, 0, 1, 0, -0.000333711, 4.12503, -0.0571423, -0.0598513)
+
+[node name="gcAnim" type="AnimationPlayer" parent="GC"]
+libraries = {
+"": SubResource("AnimationLibrary_e1ejq")
+}
+
+[node name="talk" type="AudioStreamPlayer3D" parent="GC"]
+
+[node name="idl0" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_h2bg8")
+volume_db = -20.0
+
+[node name="idl1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_kqhhy")
+volume_db = -30.0
+
+[node name="EnergyReadyArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61012, 0, 0)
+
+[node name="OpenEnergy" type="AudioStreamPlayer3D" parent="EnergyReadyArea"]
+stream = ExtResource("9_u7og4")
+
+[node name="CloseEnergy" type="AudioStreamPlayer3D" parent="EnergyReadyArea"]
+stream = ExtResource("10_y2nqp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnergyReadyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.953125, 0.366172, -0.087982)
+shape = SubResource("BoxShape3D_tsc6n")
+
+[node name="EnergyReady0" type="StaticBody3D" parent="EnergyReadyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237954, 1.08144, 0.0588079)
+collision_layer = 2
+collision_mask = 2
+
+[node name="fusionReady" parent="EnergyReadyArea/EnergyReady0" instance=ExtResource("8_0cqa6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnergyReadyArea/EnergyReady0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109651, -0.0315604, 0)
+shape = SubResource("BoxShape3D_pa1x6")
+
+[node name="ready0Anim" type="AnimationPlayer" parent="EnergyReadyArea/EnergyReady0"]
+libraries = {
+"": SubResource("AnimationLibrary_jf1i1")
+}
+
+[node name="EnergyReady1" type="StaticBody3D" parent="EnergyReadyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237954, 1.08144, -0.0205402)
+collision_layer = 2
+collision_mask = 2
+
+[node name="fusionReady" parent="EnergyReadyArea/EnergyReady1" instance=ExtResource("8_0cqa6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnergyReadyArea/EnergyReady1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109651, -0.0315604, 0)
+shape = SubResource("BoxShape3D_pa1x6")
+
+[node name="ready1Anim" type="AnimationPlayer" parent="EnergyReadyArea/EnergyReady1"]
+libraries = {
+"": SubResource("AnimationLibrary_w7s3f")
+}
+
+[node name="EnergyReady2" type="StaticBody3D" parent="EnergyReadyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237954, 1.08144, -0.0999034)
+collision_layer = 2
+collision_mask = 2
+
+[node name="fusionReady" parent="EnergyReadyArea/EnergyReady2" instance=ExtResource("8_0cqa6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnergyReadyArea/EnergyReady2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109651, -0.0315604, 0)
+shape = SubResource("BoxShape3D_pa1x6")
+
+[node name="ready2Anim" type="AnimationPlayer" parent="EnergyReadyArea/EnergyReady2"]
+libraries = {
+"": SubResource("AnimationLibrary_3725u")
+}
+
+[node name="FusionReady_0" type="Node3D" parent="EnergyReadyArea"]
+transform = Transform3D(0.878817, 0, 0.477159, 0, 1, 0, -0.477159, 0, 0.878817, -0.391269, 1.61481, -0.0169613)
+
+[node name="fr0" parent="EnergyReadyArea/FusionReady_0" instance=ExtResource("9_jus37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0728446, -0.261195, 0.0100718)
+
+[node name="Animfr0" type="AnimationPlayer" parent="EnergyReadyArea/FusionReady_0"]
+
+[node name="FusionReady_1" type="Node3D" parent="EnergyReadyArea"]
+transform = Transform3D(0.878817, 0, 0.477159, 0, 1, 0, -0.477159, 0, 0.878817, -0.391269, 1.61481, -0.0169613)
+
+[node name="fr1" parent="EnergyReadyArea/FusionReady_1" instance=ExtResource("9_jus37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114961, -0.261195, 0.0117266)
+
+[node name="Animfr1" type="AnimationPlayer" parent="EnergyReadyArea/FusionReady_1"]
+root_node = NodePath("../../FusionReady_0")
+
+[node name="FusionReady_2" type="Node3D" parent="EnergyReadyArea"]
+transform = Transform3D(0.878817, 0, 0.477159, 0, 1, 0, -0.477159, 0, 0.878817, -0.391269, 1.61481, -0.0169613)
+
+[node name="fr2" parent="EnergyReadyArea/FusionReady_2" instance=ExtResource("9_jus37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155452, -0.261195, 0.0140592)
+
+[node name="Animfr2" type="AnimationPlayer" parent="EnergyReadyArea/FusionReady_2"]
+root_node = NodePath("../../FusionReady_0")
+
+[node name="FusionStartArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30358, 0, 0)
+
+[node name="FsStart" type="AudioStreamPlayer3D" parent="FusionStartArea"]
+stream = ExtResource("13_xp8bc")
+
+[node name="FsClose" type="AudioStreamPlayer3D" parent="FusionStartArea"]
+stream = ExtResource("15_dp257")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FusionStartArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11902, 0.282181, -0.0869943)
+shape = SubResource("BoxShape3D_uwwtq")
+
+[node name="fusionStart" parent="FusionStartArea" instance=ExtResource("10_ftxng")]
+transform = Transform3D(1.03994, 0, 0, 0, 1.03994, 0, 0, 0, 1.03994, 0.822922, 1.06122, -0.0667735)
+
+[node name="fsAnim" type="AnimationPlayer" parent="FusionStartArea"]
+libraries = {
+"": SubResource("AnimationLibrary_oa7e4")
+}
+
+[node name="StartEgineFusion" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.47519)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartEgineFusion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0156853, 0.521977, -0.118379)
+shape = SubResource("BoxShape3D_51lxt")
+
+[node name="startEngineObject" parent="StartEgineFusion" instance=ExtResource("11_fvita")]
+transform = Transform3D(0.674969, 0, 0, 0, 0.466086, 0.488208, 0, -0.488208, 0.466086, -0.0126106, 0.882848, 0.502376)
+
+[node name="SEFAnim" type="AnimationPlayer" parent="StartEgineFusion"]
+root_node = NodePath("../../FusionStartArea")
+libraries = {
+"": SubResource("AnimationLibrary_cd0tu")
+}
+
+[node name="SEFSound_open" type="AudioStreamPlayer3D" parent="StartEgineFusion"]
+stream = ExtResource("18_aa4vf")
+
+[node name="SEFSound_close" type="AudioStreamPlayer3D" parent="StartEgineFusion"]
+stream = ExtResource("18_aa4vf")
+
+[node name="fps" parent="." instance=ExtResource("1_k2el7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.67365, 0.0975816, -0.00872874)
+
+[node name="Settings" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.76197)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0112305, 0.510646, 0.474033)
+shape = SubResource("BoxShape3D_kw8hk")
+
+[node name="ST0" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196508, 1.3055, -1.00363)
+
+[node name="settingsObject" parent="Settings/ST0" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST0"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST0" type="AnimationPlayer" parent="Settings/ST0"]
+
+[node name="ST1" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.254776, 1.2593, -0.884908)
+
+[node name="settingsObject" parent="Settings/ST1" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST1"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST1" type="AnimationPlayer" parent="Settings/ST1"]
+root_node = NodePath("../../ST0")
+
+[node name="ST2" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.313679, 1.19731, -0.77957)
+
+[node name="settingsObject" parent="Settings/ST2" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST2"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST2" type="AnimationPlayer" parent="Settings/ST2"]
+root_node = NodePath("../../ST0")
+
+[node name="ST3" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354125, 1.14286, -0.671131)
+
+[node name="settingsObject" parent="Settings/ST3" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST3"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST3" type="AnimationPlayer" parent="Settings/ST3"]
+root_node = NodePath("../../ST0")
+
+[node name="ST4" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392623, 1.09801, -0.546681)
+
+[node name="settingsObject" parent="Settings/ST4" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST4"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST4" type="AnimationPlayer" parent="Settings/ST4"]
+root_node = NodePath("../../ST0")
+
+[node name="ST5" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436479, 1.04968, -0.440635)
+
+[node name="settingsObject" parent="Settings/ST5" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST5"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST5" type="AnimationPlayer" parent="Settings/ST5"]
+root_node = NodePath("../../ST0")
+
+[node name="ST6" type="StaticBody3D" parent="Settings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.494852, 0.995266, -0.32846)
+
+[node name="settingsObject" parent="Settings/ST6" instance=ExtResource("13_w23cv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settings/ST6"]
+transform = Transform3D(1, 0, 0, 0, 0.907572, -0.419896, 0, 0.419896, 0.907572, 0, 0, 0)
+shape = SubResource("BoxShape3D_xt6y7")
+
+[node name="Anim_ST6" type="AnimationPlayer" parent="Settings/ST6"]
+root_node = NodePath("../../ST0")
+
+[node name="portal_enter" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95865, 0, 0)
+
+[node name="PortalEnergyLoading" parent="portal_enter" instance=ExtResource("20_sb6j3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82127, -1.30069, 0)
+
+[node name="PortalReady" type="AnimationPlayer" parent="portal_enter/PortalEnergyLoading"]
+libraries = {
+"": SubResource("AnimationLibrary_7csmj")
+}
+
+[node name="EnergyLoading" type="AudioStreamPlayer3D" parent="portal_enter/PortalEnergyLoading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82127, 1.30069, 0)
+stream = ExtResource("21_rv3ma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="portal_enter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70019, 0.456609, -0.0253296)
+shape = SubResource("BoxShape3D_rxias")
+
+[node name="portal_door" parent="portal_enter" instance=ExtResource("15_7ofwr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05169, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="portal_enter/portal_door"]
+
+[node name="leftCOLL" type="CollisionShape3D" parent="portal_enter/portal_door/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677795, -1.26584)
+shape = SubResource("BoxShape3D_a5vey")
+
+[node name="rightCOLL" type="CollisionShape3D" parent="portal_enter/portal_door/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.677795, 1.23794)
+shape = SubResource("BoxShape3D_a5vey")
+
+[node name="PortalDoorCoLL" type="CollisionShape3D" parent="portal_enter/portal_door/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072998, 0.673047, -0.0203857)
+shape = SubResource("BoxShape3D_grwre")
+
+[node name="PDoorOpenSound" type="AudioStreamPlayer3D" parent="portal_enter"]
+stream = ExtResource("22_ghkhe")
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="light" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1871, 0)
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="light2" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52034, 2.27956, 5.85872)
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="light3" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.91165, 2.27956, 5.85872)
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="light4" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.52034, 2.27956, 8.17504)
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="light5" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.91165, 2.27956, 8.17504)
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="light6" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14883, 2.27956, 6.30923)
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="DoorArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.5548)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0559998, 0.443001, 0.0202026)
+shape = SubResource("BoxShape3D_l6hg1")
+
+[node name="Open" type="AudioStreamPlayer3D" parent="DoorArea"]
+stream = ExtResource("21_wwlgp")
+
+[node name="Close" type="AudioStreamPlayer3D" parent="DoorArea"]
+stream = ExtResource("22_cw6x5")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="name" type="LineEdit" parent="ui"]
+layout_mode = 0
+offset_left = 387.0
+offset_top = 294.0
+offset_right = 633.403
+offset_bottom = 326.155
+placeholder_text = "What is your name"
+
+[connection signal="animation_finished" from="GC/gcAnim" to="." method="_on_gc_anim_animation_finished"]
+[connection signal="finished" from="idl0" to="." method="_on_idl_0_finished"]
+[connection signal="finished" from="idl1" to="." method="_on_idl_1_finished"]
+[connection signal="body_entered" from="EnergyReadyArea" to="." method="_on_energy_ready_area_body_entered"]
+[connection signal="body_exited" from="EnergyReadyArea" to="." method="_on_energy_ready_area_body_exited"]
+[connection signal="animation_finished" from="EnergyReadyArea/EnergyReady0/ready0Anim" to="." method="_on_ready_0_anim_animation_finished"]
+[connection signal="animation_finished" from="EnergyReadyArea/EnergyReady1/ready1Anim" to="." method="_on_ready_1_anim_animation_finished"]
+[connection signal="animation_finished" from="EnergyReadyArea/EnergyReady2/ready2Anim" to="." method="_on_ready_2_anim_animation_finished"]
+[connection signal="body_entered" from="FusionStartArea" to="." method="_on_fusion_start_area_body_entered"]
+[connection signal="body_exited" from="FusionStartArea" to="." method="_on_fusion_start_area_body_exited"]
+[connection signal="animation_finished" from="FusionStartArea/fsAnim" to="." method="_on_fs_anim_animation_finished"]
+[connection signal="body_entered" from="StartEgineFusion" to="." method="_on_start_egine_fusion_body_entered"]
+[connection signal="body_exited" from="StartEgineFusion" to="." method="_on_start_egine_fusion_body_exited"]
+[connection signal="animation_finished" from="StartEgineFusion/SEFAnim" to="." method="_on_sef_anim_animation_finished"]
+[connection signal="body_entered" from="Settings" to="." method="_on_settings_body_entered"]
+[connection signal="body_exited" from="Settings" to="." method="_on_settings_body_exited"]
+[connection signal="body_entered" from="portal_enter" to="." method="_on_portal_enter_body_entered"]
+[connection signal="body_exited" from="portal_enter" to="." method="_on_portal_enter_body_exited"]
+[connection signal="animation_finished" from="portal_enter/PortalEnergyLoading/PortalReady" to="." method="_on_portal_ready_animation_finished"]
+[connection signal="body_entered" from="DoorArea" to="." method="_on_door_area_body_entered"]
+[connection signal="body_exited" from="DoorArea" to="." method="_on_door_area_body_exited"]

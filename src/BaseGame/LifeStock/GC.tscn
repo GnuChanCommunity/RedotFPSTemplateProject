@@ -1,0 +1,117 @@
+[gd_scene load_steps=30 format=3 uid="uid://def2vuig6mpcu"]
+
+[ext_resource type="Script" path="res://BaseGame/LifeStock/gc.gd" id="1_5g27a"]
+[ext_resource type="PackedScene" uid="uid://becncctccuiwa" path="res://BaseGame/LifeStock/3D/CubeChan.glb" id="1_naahc"]
+[ext_resource type="Animation" uid="uid://4aydquc78658" path="res://BaseGame/LifeStock/3D/cubeChanAnimation_/idl.res" id="3_v8lg3"]
+[ext_resource type="Animation" uid="uid://dxxbqhy72y2l2" path="res://BaseGame/LifeStock/3D/cubeChanAnimation_/screet.res" id="4_gdwyx"]
+[ext_resource type="Animation" uid="uid://dx8s4me1u06x" path="res://BaseGame/LifeStock/3D/cubeChanAnimation_/walk_backward.res" id="5_8l53y"]
+[ext_resource type="Animation" uid="uid://cogb1li8mts2p" path="res://BaseGame/LifeStock/3D/cubeChanAnimation_/walk_forward.res" id="6_qp2g4"]
+[ext_resource type="Script" path="res://BaseGame/Scripts/CubeChanAnim.gd" id="7_13tky"]
+[ext_resource type="AudioStream" uid="uid://dw0h0yhfwg8xm" path="res://BaseGame/Sound/Effect/walk.ogg" id="8_4qivw"]
+[ext_resource type="AudioStream" uid="uid://oaa0shu5rmyf" path="res://BaseGame/Sound/Effect/run.ogg" id="9_puv7b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_be8lk"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mq6oa"]
+_data = {
+"idl": ExtResource("3_v8lg3"),
+"screet": ExtResource("4_gdwyx"),
+"walk_backward": ExtResource("5_8l53y"),
+"walk_forward": ExtResource("6_qp2g4")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ahfwp"]
+animation = &"cubeChanAnim/idl"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_klafd"]
+animation = &"cubeChanAnim/screet"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0xvss"]
+animation = &"cubeChanAnim/walk_backward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uv1b7"]
+animation = &"cubeChanAnim/walk_forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_610b5"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vtf24"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5jwhi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_06c1n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ki74"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_abp6w"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m1rrl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2rmxy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_20dwl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5cvg1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_akhhh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3td17"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcnof"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ehafy"]
+states/cubeChanAnim_idl/node = SubResource("AnimationNodeAnimation_ahfwp")
+states/cubeChanAnim_idl/position = Vector2(479, 100)
+states/cubeChanAnim_screet/node = SubResource("AnimationNodeAnimation_klafd")
+states/cubeChanAnim_screet/position = Vector2(743, 100)
+states/cubeChanAnim_walk_backward/node = SubResource("AnimationNodeAnimation_0xvss")
+states/cubeChanAnim_walk_backward/position = Vector2(361, 179)
+states/cubeChanAnim_walk_forward/node = SubResource("AnimationNodeAnimation_uv1b7")
+states/cubeChanAnim_walk_forward/position = Vector2(361, 22)
+transitions = ["Start", "cubeChanAnim_idl", SubResource("AnimationNodeStateMachineTransition_610b5"), "cubeChanAnim_idl", "cubeChanAnim_walk_forward", SubResource("AnimationNodeStateMachineTransition_vtf24"), "cubeChanAnim_walk_forward", "cubeChanAnim_idl", SubResource("AnimationNodeStateMachineTransition_5jwhi"), "cubeChanAnim_idl", "cubeChanAnim_walk_backward", SubResource("AnimationNodeStateMachineTransition_06c1n"), "cubeChanAnim_walk_backward", "cubeChanAnim_idl", SubResource("AnimationNodeStateMachineTransition_7ki74"), "cubeChanAnim_idl", "cubeChanAnim_screet", SubResource("AnimationNodeStateMachineTransition_abp6w"), "cubeChanAnim_screet", "cubeChanAnim_idl", SubResource("AnimationNodeStateMachineTransition_m1rrl"), "cubeChanAnim_screet", "cubeChanAnim_walk_forward", SubResource("AnimationNodeStateMachineTransition_2rmxy"), "cubeChanAnim_walk_forward", "cubeChanAnim_screet", SubResource("AnimationNodeStateMachineTransition_20dwl"), "cubeChanAnim_walk_backward", "cubeChanAnim_screet", SubResource("AnimationNodeStateMachineTransition_5cvg1"), "cubeChanAnim_screet", "cubeChanAnim_walk_backward", SubResource("AnimationNodeStateMachineTransition_akhhh"), "cubeChanAnim_walk_forward", "cubeChanAnim_walk_backward", SubResource("AnimationNodeStateMachineTransition_3td17"), "cubeChanAnim_walk_backward", "cubeChanAnim_walk_forward", SubResource("AnimationNodeStateMachineTransition_pcnof")]
+graph_offset = Vector2(-10, 6)
+
+[node name="GC" type="CharacterBody3D"]
+script = ExtResource("1_5g27a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00096, 0)
+shape = SubResource("CapsuleShape3D_be8lk")
+
+[node name="CubeChan_body" type="Node3D" parent="."]
+
+[node name="CubeChan" parent="CubeChan_body" instance=ExtResource("1_naahc")]
+transform = Transform3D(-2.89123e-08, 0, 0.661437, 0, 0.661437, 0, -0.661437, 0, -2.89123e-08, 0, 0, 0)
+
+[node name="Anim" type="AnimationPlayer" parent="CubeChan_body/CubeChan"]
+libraries = {
+"cubeChanAnim": SubResource("AnimationLibrary_mq6oa")
+}
+
+[node name="Tree" type="AnimationTree" parent="CubeChan_body/CubeChan/Anim"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_ehafy")
+anim_player = NodePath("..")
+script = ExtResource("7_13tky")
+
+[node name="CubeChan_Light1" type="SpotLight3D" parent="CubeChan_body/CubeChan"]
+transform = Transform3D(-6.60855e-08, 0, -1.51186, 0, 1.51186, 0, 1.51186, 0, -6.60855e-08, 0.248926, 1.37519, 0.258801)
+visible = false
+
+[node name="CubeChan_Light2" type="SpotLight3D" parent="CubeChan_body/CubeChan"]
+transform = Transform3D(-6.60855e-08, 0, -1.51186, 0, 1.51186, 0, 1.51186, 0, -6.60855e-08, 0.248926, 1.37519, -0.24799)
+visible = false
+
+[node name="CubeChan_Light3" type="SpotLight3D" parent="CubeChan_body/CubeChan"]
+transform = Transform3D(-6.60855e-08, 0, 1.51186, 0, 1.51186, 0, -1.51186, 0, -6.60855e-08, -0.412729, 2.34422, -0.387218)
+visible = false
+
+[node name="CubeChan_Light4" type="SpotLight3D" parent="CubeChan_body/CubeChan"]
+transform = Transform3D(-6.60855e-08, 0, 1.51186, 0, 1.51186, 0, -1.51186, 0, -6.60855e-08, -0.412729, 2.34422, 0.370183)
+visible = false
+
+[node name="walk" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_4qivw")
+
+[node name="run" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_puv7b")

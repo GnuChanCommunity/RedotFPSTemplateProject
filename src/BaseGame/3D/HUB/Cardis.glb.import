@@ -1,0 +1,116 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ilolfoh8j4ty"
+path="res://.godot/imported/Cardis.glb-a1b0060b52f6acc10c37bbca83763041.scn"
+
+[deps]
+
+source_file="res://BaseGame/3D/HUB/Cardis.glb"
+dest_files=["res://.godot/imported/Cardis.glb-a1b0060b52f6acc10c37bbca83763041.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"AreaHalfTransparent": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/AreaHalfTransparent.tres"
+},
+"board": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/board.tres"
+},
+"board1": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/board1.tres"
+},
+"center": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/center.tres"
+},
+"collision": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/Collision.tres"
+},
+"energy": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/energy.tres"
+},
+"fusion_ready_0": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/fusion_ready_0.tres"
+},
+"fusion_ready_1": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/fusion_ready_1.tres"
+},
+"fusion_ready_2": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/fusion_ready_2.tres"
+},
+"gc": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/gcShader.tres"
+},
+"glass": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/glass.tres"
+},
+"light": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/light.tres"
+},
+"screen": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/screen.tres"
+},
+"settingScreen": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/settingScreen.tres"
+},
+"suporter0": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/suporter0.tres"
+},
+"supporter1": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/supporter1.tres"
+},
+"teleportEnergy": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/teleportEnergy.tres"
+},
+"xLight": {
+"use_external/enabled": true,
+"use_external/path": "res://BaseGame/3D/HUB/xLight.tres"
+}
+},
+"nodes": {
+"PATH:collision": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
