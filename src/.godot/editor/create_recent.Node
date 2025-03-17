@@ -1,0 +1,14 @@
+Node3D
+OmniLight3D
+SpotLight3D
+LightmapGI
+DirectionalLight3D
+Label
+AudioStreamPlayer
+AudioStreamPlayer2D
+Button
+LineEdit
+TextEdit
+HBoxContainer
+VBoxContainer
+Panel

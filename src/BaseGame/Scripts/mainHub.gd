@@ -20,21 +20,102 @@ var ScanPositionR3 = randf_range(-0.5, 0.5)
 
 var PortalEnergy = preload("res://BaseGame/3D/HUB/teleportEnergy.tres")
 
+var TalkNow_bool = false
 
 # talk
 var TalkStart = false
-var TalkEnd = false
 @onready var Talk = $GC/talk
 var hello = false
 var name_ = false
 var welcome = false
+var TalkEnd = false
+
 
 # Welcome
 var merhaba = preload("res://BaseGame/Sound/Voice/merhama.ogg")
-var hosgeldin = preload("res://BaseGame/Sound/Voice/hosgeldin.ogg")
+var hi = preload("res://BaseGame/Sound/Voice/hi.ogg")
 
-#Names
-var cevik =  preload("res://BaseGame/Sound/Voice/cevik.ogg")
+var hosgeldin = preload("res://BaseGame/Sound/Voice/hosgeldin.ogg")
+var welcome_sound   = preload("res://BaseGame/Sound/Voice/welcome.ogg")
+
+var sonKonusma = preload("res://BaseGame/Sound/Voice/sonkonusma.ogg")
+var lastTalk   = preload("res://BaseGame/Sound/Voice/lastTalk.ogg")
+
+# Turkish names
+var cevik    = preload("res://BaseGame/Sound/Voice/cevik.ogg")
+var mustafa  = preload("res://BaseGame/Sound/Voice/mustafa.ogg")
+var refik    = preload("res://BaseGame/Sound/Voice/refik.ogg")
+var Werquast = preload("res://BaseGame/Sound/Voice/Werquast​.ogg")
+var Ahmet    = preload("res://BaseGame/Sound/Voice/Ahmet.ogg")
+var Mehmet   = preload("res://BaseGame/Sound/Voice/Mehmet.ogg")
+var Ali      = preload("res://BaseGame/Sound/Voice/Ali.ogg")
+var Hasan    = preload("res://BaseGame/Sound/Voice/Hasan.ogg")
+
+var Huseyin  = preload("res://BaseGame/Sound/Voice/huseyin.ogg")
+var ibrahim  = preload("res://BaseGame/Sound/Voice/İbrahim.ogg")
+var Osman    = preload("res://BaseGame/Sound/Voice/Osman.ogg")
+var Yusuf    = preload("res://BaseGame/Sound/Voice/Yusuf.ogg")
+var Emre     = preload("res://BaseGame/Sound/Voice/Emre.ogg")
+var Burak    = preload("res://BaseGame/Sound/Voice/Burak.ogg")
+var Fatih    = preload("res://BaseGame/Sound/Voice/Fatih.ogg")
+var Ramazan  = preload("res://BaseGame/Sound/Voice/Ramazan.ogg")
+var Enes     = preload("res://BaseGame/Sound/Voice/Enes.ogg")
+var Omer     = preload("res://BaseGame/Sound/Voice/omer.ogg")
+var Murat    = preload("res://BaseGame/Sound/Voice/Murat.ogg")
+var Selim    = preload("res://BaseGame/Sound/Voice/Selim.ogg")
+var Furkan   = preload("res://BaseGame/Sound/Voice/Furkan.ogg")
+var Kadir    = preload("res://BaseGame/Sound/Voice/Kadir.ogg")
+var Abdullah = preload("res://BaseGame/Sound/Voice/Abdullah.ogg")
+var Kubilay  = preload("res://BaseGame/Sound/Voice/kubilay.ogg")
+var Eren     = preload("res://BaseGame/Sound/Voice/eren.ogg")
+var Gokberk  = preload("res://BaseGame/Sound/Voice/gokberk.ogg")
+var Ismail   = preload("res://BaseGame/Sound/Voice/ismail.ogg")
+var Hakki    = preload("res://BaseGame/Sound/Voice/hakki.ogg")
+var Samet    = preload("res://BaseGame/Sound/Voice/samet.ogg")
+var Davut    = preload("res://BaseGame/Sound/Voice/davut.ogg")
+var Suleyman = preload("res://BaseGame/Sound/Voice/suleyman.ogg")
+var Onur     = preload("res://BaseGame/Sound/Voice/onur.ogg")
+var Ugur     = preload("res://BaseGame/Sound/Voice/ugur.ogg")
+var Batuhan  = preload("res://BaseGame/Sound/Voice/batuhan.ogg")
+var Serkan   = preload("res://BaseGame/Sound/Voice/serkan.ogg")
+var Serdar146 = preload("res://BaseGame/Sound/Voice/serdar.ogg")
+var Baris    = preload("res://BaseGame/Sound/Voice/baris.ogg")
+var Erkan    = preload("res://BaseGame/Sound/Voice/Erkan.ogg")
+var Cem_lifeIsShit      = preload("res://BaseGame/Sound/Voice/cem.ogg")
+var Cemal    = preload("res://BaseGame/Sound/Voice/Cemal.ogg")
+var Tuncay   = preload("res://BaseGame/Sound/Voice/Tuncay.ogg")
+var Sinan    = preload("res://BaseGame/Sound/Voice/Sinan.ogg")
+var Eray     = preload("res://BaseGame/Sound/Voice/Eray.ogg")
+var Cihan    = preload("res://BaseGame/Sound/Voice/Cihan.ogg")
+var Can      = preload("res://BaseGame/Sound/Voice/Can.ogg")
+var Berkay   = preload("res://BaseGame/Sound/Voice/Berkay.ogg")
+var Alper    = preload("res://BaseGame/Sound/Voice/Alper.ogg")
+var Alp      = preload("res://BaseGame/Sound/Voice/Alp.ogg")
+var Deniz    = preload("res://BaseGame/Sound/Voice/deniz.ogg")
+var Tolga    = preload("res://BaseGame/Sound/Voice/Tolga.ogg")
+var Harun    = preload("res://BaseGame/Sound/Voice/Harun.ogg")
+var Yasin    = preload("res://BaseGame/Sound/Voice/Yasin.ogg")
+var Taylan   = preload("res://BaseGame/Sound/Voice/Taylan.ogg")
+var Bora     = preload("res://BaseGame/Sound/Voice/Bora.ogg")
+var Sarp     = preload("res://BaseGame/Sound/Voice/Sarp.ogg")
+var Kenan    = preload("res://BaseGame/Sound/Voice/kenan.ogg")
+var Arda     = preload("res://BaseGame/Sound/Voice/Arda.ogg")
+var Dogan    = preload("res://BaseGame/Sound/Voice/dogan.ogg")
+var Gorkem   = preload("res://BaseGame/Sound/Voice/gorkem.ogg")
+var Cagatay  = preload("res://BaseGame/Sound/Voice/cagatay.ogg")
+var Metin    = preload("res://BaseGame/Sound/Voice/metin.ogg")
+var Nihat    = preload("res://BaseGame/Sound/Voice/nihat.ogg")
+var Sahin    = preload("res://BaseGame/Sound/Voice/sahin.ogg")
+var Adem     = preload("res://BaseGame/Sound/Voice/adem.ogg")
+
+# English Names
+var alex = preload("res://BaseGame/Sound/Voice/alex.ogg")
+
+var isimsiz = preload("res://BaseGame/Sound/Voice/isimsiz.ogg")
+var noName  = preload("res://BaseGame/Sound/Voice/noname.ogg")
+
+var openLight_tr = preload("res://BaseGame/Sound/Voice/light_tr.ogg")
+var openLight_en = preload("res://BaseGame/Sound/Voice/light_en.ogg")
 
 func _ready() -> void:
 	$idl0.play()
@@ -51,17 +132,24 @@ func _ready() -> void:
 	$GC/gcAnim.play("FirtTalk")
 	GLobalVar.walkNow = true
 	GLobalVar.PlayerSettings["CanWalk"] = false
+	GLobalVar.PlayerSettings["CanJump"] = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	$fps/shaders/ui/name.grab_focus()
+	$pcArea/pcCAM/UI.visible = false
 
+func _rotatePosition():
+	if not GLobalVar.PlayerSettings["GiveLife"]:
+		$GC.look_at($fps.global_transform.origin)
 
 func _GiveLife():
 	if Input.is_action_just_pressed("l"):
-		if not GLobalVar.PlayerSettings["GiveLife"]:
+		if not GLobalVar.PlayerSettings["GiveLife"] and not GLobalVar.firstLoading:
 			GLobalVar.PlayerSettings["GiveLife"] = true
 		else: GLobalVar.PlayerSettings["GiveLife"] = false
 
 func _EnergyStatusRotate(delta):
 	$Cardis/energyDC/rotate.rotate_y(5 * delta)
+
 
 # Energy Ready X3
 func _EnergyReadyArea():
@@ -195,39 +283,185 @@ func _Door():
 				DoorOpen = false
 # Door
 
-# level change 
-func  _name():
-	if Input.is_action_just_pressed("Enter"):
-		if len($ui/name.text) > 0:
-			GLobalVar.PlayerSettings["Name"] = $ui/name.text
-			$ui/name.visible = false
-			GLobalVar.PlayerSettings["CanWalk"] = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			print($ui/name.text)
-
 func _PortalEnter_LevelChange():
 	if GLobalVar.EngineReady:
 		if TalkStart:
 			if not hello:
-				print("works! 0")
-				Talk.stream = merhaba
+				if "turkish" == GLobalVar.PlayerSettings["lang"]:
+					Talk.stream = merhaba
+					hello = true
+				elif "english" == GLobalVar.PlayerSettings["lang"]:
+					Talk.stream = hi
 				Talk.play()
 				hello = true
 
 			if not Talk.playing and hello:
 				if not name_:
-					print("works! 1")
-					Talk.stream = cevik
+					if "turkish" == GLobalVar.PlayerSettings["lang"]:
+						if "cevik" or "çevik" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = cevik
+						elif "mustafa" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = mustafa
+						elif "refik" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = refik
+						elif "Werquast​" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Werquast
+						elif "Ahmet" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Ahmet
+						elif "Mehmet" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Mehmet
+						elif "ali" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Ali
+						elif "hasan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Hasan
+						elif "Huseyin" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Huseyin
+						elif "Hasan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Hasan
+						elif "İbrahim" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = ibrahim
+						elif "Osman" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Osman
+						elif "Yusuf" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Yusuf
+						elif "Emre" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Emre
+						elif "Burak" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Burak
+						elif "Fatih" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Fatih
+						elif "Ramazan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Ramazan
+						elif "Enes" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Enes
+						elif "Ömer" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Omer
+						elif "Murat" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Murat
+						elif "Selim" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Selim
+						elif "Furkan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Furkan
+						elif "Kadir" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Kadir
+						elif "Abdullah" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Abdullah
+						elif "Kubilay" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Kubilay
+						elif "Eren" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Eren
+						elif "Gökberk" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Gokberk
+						elif "İsmail" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Ismail
+						elif "Hakkı" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Hakki
+						elif "Samet" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Samet
+						elif "Davut" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Davut
+						elif "Süleyman" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Suleyman
+						elif "Onur" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Onur
+						elif "Uğur" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Ugur
+						elif "Batuhan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Batuhan
+						elif "Serkan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Serkan
+						elif "Serdar" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Serdar146
+						elif "Barış" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Baris
+						elif "Erkan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Erkan
+						elif "Cem" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Cem_lifeIsShit
+						elif "Cemal" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Cemal
+						elif "Tuncay" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Tuncay
+						elif "Sinan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Sinan
+						elif "Eray" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Eray
+						elif "Cihan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Cihan
+						elif "Can" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Can
+						elif "Berkay" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Berkay
+						elif "Alper" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Alper
+						elif "Alp" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Alp
+						elif "Deniz" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Deniz
+						elif "Tolga" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Tolga
+						elif "Harun" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Harun
+						elif "Yasin" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Yasin
+						elif "Taylan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Taylan
+						elif "Bora" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Bora
+						elif "Sarp" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Sarp
+						elif "Kenan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Kenan
+						elif "Arda" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Arda
+						elif "Doğan" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Dogan
+						elif "Görkem" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Gorkem
+						elif "Çağatay" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Cagatay
+						elif "Metin" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Metin
+						elif "Nihat" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Nihat
+						elif "Şahin" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Sahin
+						elif "Adem" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = Adem
+						else:
+							Talk.stream = isimsiz
+
+					elif "english" == GLobalVar.PlayerSettings["lang"]:
+						if "alex" == GLobalVar.PlayerSettings["Name"]:
+							Talk.stream = alex
+						else:
+							Talk.stream = noName
+
 					Talk.play()
 					name_ = true
 
+
 			if not Talk.playing and hello and name_:
 				if not welcome:
-					print("works! 2")
-					Talk.stream = hosgeldin
+					if "turkish" == GLobalVar.PlayerSettings["lang"]:
+						Talk.stream = hosgeldin
+					elif "english" == GLobalVar.PlayerSettings["lang"]:
+						Talk.stream = welcome_sound
 					Talk.play()
 					welcome = true
+
+			if not Talk.playing and hello and name_ and welcome:
+				if not TalkEnd:
+					if "turkish" == GLobalVar.PlayerSettings["lang"]:
+						Talk.stream = sonKonusma
+					elif "english" == GLobalVar.PlayerSettings["lang"]:
+						Talk.stream = lastTalk
+					Talk.play()
+					TalkEnd = true
+
+	if hello and name_ and welcome and Talk:
+		if not Talk.playing:
+			pass # game is starting
 
 var PlayFirstTalkWalk = false
 func _on_portal_ready_animation_finished(anim_name: StringName) -> void:
@@ -245,6 +479,137 @@ func _on_gc_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "FirtTalk":
 		GLobalVar.walkNow = false
 
+func _Settings():
+	if Input.is_action_just_pressed("left_m"):
+		if SettingsArea:
+			if $fps/head/standCam/hitRay.is_colliding():
+				var hit = $fps/head/standCam/hitRay.get_collider()
+				if "ST0" == hit.name:
+					if not GLobalVar.settings0:
+						GLobalVar.settings0 = true
+						$Settings/ST0/Anim_ST0.play("open0")
+					else:
+						GLobalVar.settings0 = false
+						$Settings/ST0/Anim_ST0.play_backwards("open0")
+				elif "ST1" == hit.name:
+					if not GLobalVar.settings1:
+						GLobalVar.settings1 = true
+						$Settings/ST1/Anim_ST1.play("open1")
+					else:
+						GLobalVar.settings1 = false
+						$Settings/ST1/Anim_ST1.play_backwards("open1")
+				elif "ST2" == hit.name:
+					if not GLobalVar.settings2:
+						GLobalVar.settings2 = true
+						$Settings/ST2/Anim_ST2.play("open2")
+					else:
+						GLobalVar.settings2 = false
+						$Settings/ST2/Anim_ST2.play_backwards("open2")
+				elif "ST3" == hit.name:
+					if not GLobalVar.settings3:
+						GLobalVar.settings3 = true
+						$Settings/ST3/Anim_ST3.play("open3")
+					else:
+						GLobalVar.settings3 = false
+						$Settings/ST3/Anim_ST3.play_backwards("open3")
+				elif "ST4" == hit.name:
+					if not GLobalVar.settings4:
+						GLobalVar.settings4 = true
+						$Settings/ST4/Anim_ST4.play("open4")
+					else:
+						GLobalVar.settings4 = false
+						$Settings/ST4/Anim_ST4.play_backwards("open4")
+				elif "ST5" == hit.name:
+					if not GLobalVar.settings5:
+						GLobalVar.settings5 = true
+						$Settings/ST5/Anim_ST5.play("open5")
+					else:
+						GLobalVar.settings5 = false
+						$Settings/ST5/Anim_ST5.play_backwards("open5")
+				elif "ST6" == hit.name:
+					if not GLobalVar.settings6:
+						GLobalVar.settings6 = true
+						$Settings/ST6/Anim_ST6.play("open6")
+					else:
+						GLobalVar.settings6 = false
+						$Settings/ST6/Anim_ST6.play_backwards("open6")
+
+func _TalkEvent():
+	if $fps/head/standCam/hitRay.is_colliding():
+		var hit = $fps/head/standCam/hitRay.get_collider()
+
+		if Input.is_action_just_pressed("left_m"):
+			if "GC" == hit.name:
+				if TalkNow_bool:
+					if GLobalVar.FusionReady:
+						GLobalVar.PlayerSettings["CanWalk"] = false
+						GLobalVar.PlayerSettings["OpenConsole"] = true
+						GLobalVar.PlayerSettings["talkMode"] = true
+						$fps/UI/consoleWin.show()
+						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+						$fps/UI/consoleWin/ScrollContainer/VBoxContainer/input.grab_focus()
+					else:
+						if not Talk.playing:
+							if "turkish" == GLobalVar.PlayerSettings["lang"]:
+								Talk.stream = openLight_tr
+							elif "english" == GLobalVar.PlayerSettings["lang"]:
+								Talk.stream = openLight_en
+							Talk.play()
+
+
+# radio
+var radioOpen = true
+var music = true
+func _RadioX():
+	if Input.is_action_just_pressed("left_m"):
+		if $fps/head/standCam/hitRay.is_colliding():
+			var hit = $fps/head/standCam/hitRay.get_collider()
+			if "radiox" == hit.name:
+				if radioOpen:
+					radioOpen = false
+					$Cardis/RadioX/music.stop()
+				else:
+					radioOpen = true
+					$Cardis/RadioX/music.play()
+
+	elif music and radioOpen:
+		if not $Cardis/RadioX/music.playing:
+			$Cardis/RadioX/music.play()
+# radio
+
+# pc 
+var PcArea = false
+var animFinish = false
+func _PcUsing():
+	if Input.is_action_just_pressed("left_m"):
+		if PcArea and GLobalVar.FusionReady:
+			if not GLobalVar.PlayerSettings["UsingPC"] and not animFinish:
+				GLobalVar.PlayerSettings["UsingPC"] = true
+				$pcArea/pcCAM/camAnim.play("animFinish")
+				$pcArea/pcCAM.current = true
+				animFinish = true
+			else:
+				if not animFinish:
+					GLobalVar.PlayerSettings["UsingPC"] = false
+					$pcArea/pcCAM/camAnim.play_backwards("animFinish")
+					animFinish = true
+					$pcArea/pcCAM/UI.visible = false
+
+func _on_cam_anim_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "animFinish":
+		animFinish = false
+		if GLobalVar.PlayerSettings["UsingPC"]:
+			animFinish = false
+			$pcArea/pcCAM/UI.visible = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			GLobalVar.PlayerSettings["UsingPC"] = false
+			animFinish = false
+			$fps/head/standCam.current = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+# pc 
+
 func _process(delta: float) -> void:
 	_GiveLife()
 	_EnergyStatusRotate(delta)
@@ -254,7 +619,11 @@ func _process(delta: float) -> void:
 	_StartEngine()
 	_Door()
 	_PortalEnter_LevelChange()
-	_name()
+	_Settings()
+	_TalkEvent()
+	_rotatePosition()
+	_RadioX()
+	_PcUsing()
 
 func _on_idl_0_finished() -> void:
 	$idl0.play()
@@ -291,7 +660,6 @@ func _on_settings_body_exited(body: Node3D) -> void:
 		SettingsArea = false
 
 var PlayPortalAreaFirstTime = false
-
 func _on_portal_enter_body_entered(body: Node3D) -> void:
 	if body.name == "fps":
 		if GLobalVar.EngineReady:
@@ -303,6 +671,7 @@ func _on_portal_enter_body_entered(body: Node3D) -> void:
 				$portal_enter/PortalEnergyLoading/EnergyLoading.play()
 				PlayPortalAreaFirstTime = true
 		PortalEnter = true
+
 func _on_portal_enter_body_exited(body: Node3D) -> void:
 	if body.name == "fps":
 		PortalEnter = false
@@ -313,3 +682,17 @@ func _on_door_area_body_entered(body: Node3D) -> void:
 func _on_door_area_body_exited(body: Node3D) -> void:
 	if body.name == "fps":
 		DoorArea = false
+
+func _on_talk_area_body_entered(body: Node3D) -> void:
+	if body.name == "fps":
+		TalkNow_bool = true
+func _on_talk_area_body_exited(body: Node3D) -> void:
+	if body.name == "fps":
+		TalkNow_bool = false
+
+func _on_pc_area_body_entered(body: Node3D) -> void:
+	if body.name == "fps":
+		PcArea = true
+func _on_pc_area_body_exited(body: Node3D) -> void:
+	if body.name == "fps":
+		PcArea = false

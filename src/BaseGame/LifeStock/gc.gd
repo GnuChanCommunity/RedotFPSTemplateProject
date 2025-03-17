@@ -3,10 +3,13 @@ extends CharacterBody3D
 var SPEED = 1
 const JUMP_VELOCITY = 4.5
 
+
+
 func _input(event):
 	if GLobalVar.PlayerSettings["GiveLife"]:
 		if event is InputEventMouseMotion:
 			rotate_y(deg_to_rad(-event.relative.x * GLobalVar.PlayerSettings["MouseSpeed"]))
+
 
 func  _walSound():
 	if Input.is_action_pressed("w") or Input.is_action_pressed("s"):
@@ -21,6 +24,7 @@ func  _walSound():
 	if GLobalVar.walkNow:
 		if not $walk.playing:
 			$walk.play()
+
 
 
 func _process(delta: float) -> void:

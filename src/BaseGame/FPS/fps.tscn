@@ -1,10 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://cns1uy01wn0kj"]
+[gd_scene load_steps=31 format=3 uid="uid://cns1uy01wn0kj"]
 
 [ext_resource type="Script" path="res://BaseGame/FPS/fps.gd" id="1_ge6oy"]
 [ext_resource type="Texture2D" uid="uid://cu15jqtsbg4t3" path="res://BaseGame/Images/cursor0.png" id="2_6bq6q"]
+[ext_resource type="Script" path="res://BaseGame/Scripts/ui.gd" id="3_pyj23"]
 [ext_resource type="Texture2D" uid="uid://dvflpekblut54" path="res://BaseGame/Images/cursor1.png" id="3_y2nbq"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/settings.gd" id="4_2e1d4"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/console_win.gd" id="5_agy71"]
+[ext_resource type="Shader" path="res://BaseGame/Shaders/vhs.gdshader" id="6_2a2n2"]
+[ext_resource type="Theme" uid="uid://cmqilhqwhy1tl" path="res://DefaultTheme.tres" id="6_p7vit"]
+[ext_resource type="AudioStream" uid="uid://bvvubnbpucehq" path="res://BaseGame/Sound/Voice/testing.ogg" id="9_kbicf"]
+[ext_resource type="FontFile" uid="uid://dpn24n1mjdh6q" path="res://BaseGame/Font/FreeSans.otf" id="10_w5cfi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwnqa"]
 radius = 0.225
@@ -55,11 +60,21 @@ albedo_color = Color(0.0835371, 0.457642, 0.552589, 1)
 shading_mode = 0
 albedo_color = Color(0.379116, 0.464699, 0.445347, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hibti"]
+shader = ExtResource("6_2a2n2")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.565
+shader_parameter/blur_samples = 15
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hx18i"]
 texture = ExtResource("2_6bq6q")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_unico"]
 texture = ExtResource("3_y2nbq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uohdh"]
+bg_color = Color(0.23056, 0.0286582, 0.344021, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eobx"]
 bg_color = Color(0.170968, 0.0297881, 0.280621, 1)
@@ -100,6 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay/hand0"]
 transform = Transform3D(0.193973, 0, 0, 0, 0.193973, 0, 0, 0, 0.193973, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_oht2h")
 mesh = SubResource("BoxMesh_qqwbl")
 
@@ -187,36 +203,104 @@ mesh = SubResource("BoxMesh_qqwbl")
 [node name="headRay" type="Node3D" parent="."]
 
 [node name="r0" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.970088, 0.235381, -0.0593639, -0.242752, 0.940634, -0.237231, 0, 0.244546, 0.969638, 0, 0.885626, 0)
+transform = Transform3D(0.985864, 0.160812, -0.0470287, -0.16638, 0.972713, -0.161695, 0.019743, 0.167234, 0.98572, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r1" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.970088, 0.235497, 0.0589037, -0.242752, 0.941096, 0.235392, 0, -0.24265, 0.970114, 0, 0.885626, 0)
+transform = Transform3D(0.985874, 0.16099, 0.0462113, -0.166505, 0.971917, 0.166293, -0.0181421, -0.171639, 0.984993, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r2" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.970088, 0.242731, -0.00314787, -0.242752, 0.970007, -0.0125796, 0, 0.0129674, 0.999916, 0, 0.885626, 0)
+transform = Transform3D(0.985926, 0.167167, -0.00216792, -0.167182, 0.985843, -0.012785, 0, 0.0129674, 0.999916, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r3" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.9698, -0.236497, 0.0596454, 0.243903, 0.940354, -0.237161, 0, 0.244546, 0.969638, 0, 0.885626, 0)
+transform = Transform3D(0.984233, -0.170053, 0.0486616, 0.175763, 0.971136, -0.161247, -0.0198365, 0.167257, 0.985714, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r4" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.9698, -0.236614, -0.059183, 0.243903, 0.940816, 0.235322, 0, -0.24265, 0.970114, 0, 0.885626, 0)
+transform = Transform3D(0.984241, -0.170226, -0.0478804, 0.175889, 0.970338, 0.165852, 0.0182281, -0.171659, 0.984988, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r5" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.9698, -0.243882, 0.00316279, 0.243903, 0.969718, -0.0125758, 2.2608e-10, 0.0129674, 0.999916, 0, 0.885626, 0)
+transform = Transform3D(0.984289, -0.176554, 0.00228965, 0.17657, 0.984205, -0.0127637, 2.2608e-10, 0.0129674, 0.999916, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r6" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00150747, 0.967231, -0.253893, 0.000374878, 0.253893, 0.967232, 0, 0.885626, 0)
+transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00153296, 0.984676, -0.174387, 0.000251034, 0.174387, 0.984677, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
 
 [node name="r7" type="RayCast3D" parent="headRay"]
-transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00149909, 0.96836, 0.249552, -0.000407124, -0.249552, 0.968361, 0, 0.885626, 0)
+transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00152532, 0.984302, 0.176484, -0.000293951, -0.176484, 0.984303, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
+
+[node name="shaders" type="CanvasLayer" parent="."]
+
+[node name="vhs" type="ColorRect" parent="shaders"]
+material = SubResource("ShaderMaterial_hibti")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ui" type="Control" parent="shaders"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_pyj23")
+
+[node name="bg" type="Panel" parent="shaders/ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="LineEdit" parent="shaders/ui"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 252.0
+offset_right = 339.403
+offset_bottom = 284.155
+placeholder_text = "What is your name"
+caret_blink = true
+
+[node name="turkish" type="Button" parent="shaders/ui"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 314.0
+offset_right = 156.0
+offset_bottom = 345.0
+text = "Turkish"
+
+[node name="english" type="Button" parent="shaders/ui"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 349.0
+offset_right = 156.0
+offset_bottom = 380.0
+text = "English"
+
+[node name="lang" type="Label" parent="shaders/ui"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 320.0
+offset_right = 218.0
+offset_bottom = 343.0
+
+[node name="warning" type="Label" parent="shaders/ui"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 360.0
+offset_right = 712.0
+offset_bottom = 510.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -257,10 +341,21 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_unico")
 
 [node name="settings" type="Window" parent="UI"]
-position = Vector2i(315, 81)
+position = Vector2i(194, 36)
 size = Vector2i(730, 530)
 visible = false
+theme = ExtResource("6_p7vit")
 script = ExtResource("4_2e1d4")
+
+[node name="gb" type="Panel" parent="UI/settings"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_uohdh")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/settings"]
 anchors_preset = 15
@@ -282,7 +377,6 @@ size_flags_horizontal = 3
 
 [node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/MusicVolume"]
 layout_mode = 2
-text = " Music Volume"
 
 [node name="MusicVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/MusicVolume"]
 layout_mode = 2
@@ -302,7 +396,6 @@ size_flags_horizontal = 3
 
 [node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/EffectVolume"]
 layout_mode = 2
-text = " Effect Volume"
 
 [node name="EffectVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/EffectVolume"]
 layout_mode = 2
@@ -316,13 +409,31 @@ value = 1.0
 layout_mode = 2
 text = " "
 
+[node name="AmbianceVolume" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/AmbianceVolume"]
+layout_mode = 2
+
+[node name="AmbianceVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/AmbianceVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.5
+step = 0.001
+value = 1.0
+
+[node name="sep2" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/AmbianceVolume"]
+layout_mode = 2
+text = " "
+
 [node name="VoiceVolume" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume"]
 layout_mode = 2
-text = " Voice Volume"
 
 [node name="VoiceVolumeSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume"]
 layout_mode = 2
@@ -342,7 +453,6 @@ size_flags_horizontal = 3
 
 [node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed"]
 layout_mode = 2
-text = " Mouse Speed"
 
 [node name="mouseSpeedSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed"]
 layout_mode = 2
@@ -357,23 +467,54 @@ value = 0.5
 layout_mode = 2
 text = " "
 
+[node name="camFOV" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/camFOV"]
+layout_mode = 2
+text = " FOV"
+
+[node name="camFOVSlider" type="HSlider" parent="UI/settings/ScrollContainer/VBoxContainer/camFOV"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 60.0
+max_value = 120.0
+value = 90.0
+
+[node name="sep4" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/camFOV"]
+layout_mode = 2
+text = " "
+
 [node name="headShake" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/headShake"]
 layout_mode = 2
-text = " Head Shake"
 
 [node name="headShakeCheckBox" type="CheckBox" parent="UI/settings/ScrollContainer/VBoxContainer/headShake"]
 layout_mode = 2
 button_pressed = true
 
+[node name="fullScreen" type="HBoxContainer" parent="UI/settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="text" type="Label" parent="UI/settings/ScrollContainer/VBoxContainer/fullScreen"]
+layout_mode = 2
+
+[node name="fullScreenCheckBox" type="CheckBox" parent="UI/settings/ScrollContainer/VBoxContainer/fullScreen"]
+layout_mode = 2
+theme = ExtResource("6_p7vit")
+
 [node name="consoleWin" type="Window" parent="UI"]
 auto_translate_mode = 1
-position = Vector2i(270, 36)
-size = Vector2i(730, 530)
+position = Vector2i(20, 336)
+size = Vector2i(480, 275)
 visible = false
+theme = ExtResource("6_p7vit")
 script = ExtResource("5_agy71")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/consoleWin"]
@@ -389,6 +530,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
 [node name="output" type="TextEdit" parent="UI/consoleWin/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -397,17 +539,34 @@ theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_styles/read_only = SubResource("StyleBoxFlat_7eobx")
 editable = false
 wrap_mode = 1
+scroll_smooth = true
 
-[node name="console" type="LineEdit" parent="UI/consoleWin/ScrollContainer/VBoxContainer"]
+[node name="input" type="LineEdit" parent="UI/consoleWin/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_5vvf2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ev6us")
 
+[node name="dialog" type="AudioStreamPlayer" parent="UI/consoleWin"]
+stream = ExtResource("9_kbicf")
+bus = &"Voice"
+
+[node name="test" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = 597.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("10_w5cfi")
+
+[connection signal="pressed" from="shaders/ui/turkish" to="UI/settings" method="_on_turkish_pressed"]
+[connection signal="pressed" from="shaders/ui/english" to="UI/settings" method="_on_english_pressed"]
 [connection signal="close_requested" from="UI/settings" to="UI/settings" method="_on_close_requested"]
 [connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/MusicVolume/MusicVolumeSlider" to="UI/settings" method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/EffectVolume/EffectVolumeSlider" to="UI/settings" method="_on_effect_volume_slider_value_changed"]
+[connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/AmbianceVolume/AmbianceVolumeSlider" to="UI/settings" method="_on_ambiance_volume_slider_value_changed"]
 [connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/VoiceVolume/VoiceVolumeSlider" to="UI/settings" method="_on_voice_volume_slider_value_changed"]
-[connection signal="changed" from="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed/mouseSpeedSlider" to="UI/settings" method="_on_mouse_speed_slider_changed"]
 [connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/mouseSpeed/mouseSpeedSlider" to="UI/settings" method="_on_mouse_speed_slider_value_changed"]
+[connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/camFOV/camFOVSlider" to="UI/settings" method="_on_cam_fov_slider_value_changed"]
 [connection signal="toggled" from="UI/settings/ScrollContainer/VBoxContainer/headShake/headShakeCheckBox" to="UI/settings" method="_on_head_shake_check_box_toggled"]
+[connection signal="pressed" from="UI/settings/ScrollContainer/VBoxContainer/fullScreen/fullScreenCheckBox" to="UI/settings" method="_on_full_screen_check_box_pressed"]
 [connection signal="close_requested" from="UI/consoleWin" to="UI/consoleWin" method="_on_close_requested"]

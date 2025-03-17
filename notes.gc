@@ -1,5 +1,6 @@
 Base Game Hub: # burasi oyunun baslangic kismi main menu olayi yerine 3d sahne var burasi youtube kanalimin gecti yer
-	# ozey hikaye ben robot gelistiren biriyim kendi bilincimi robota aktariyorum oyuncularda benim gelistirdigim robotlar oluyorlar ve gonderdigim sanal dunyada test ediliyorlar!
+	# hikaye ben robot gelistiren biriyim kendi bilincimi robota aktariyorum.
+		oyuncularda benim gelistirdigim robotlar oluyorlar ve gonderdigim sanal dunyada test ediliyorlar!
 	
 	gonderdigim oyunda ki gibi mekanikler
 	hub bolgesinde olan sahne bir uzay araci 
@@ -13,3 +14,7 @@ Base Game Hub: # burasi oyunun baslangic kismi main menu olayi yerine 3d sahne v
 		3:engine start   -> kisi oyunu baslaticak portala enerji aktarmak icin kolu cekiyor ve portalin icine giriyor
 	3: engine baslatip portala girince portal kapisi kapaniyor ve karakter onune gelip son konusma yapiyor konusma bitince asil oyun sahnesi basliyor
 	4: buradan sonrasi farkli farkli oyunlar ornek her oyunda bu baslangic kismini default olarak kullanmak icin tutulucak
+
+
+	= Oyunumu oynadığın için teşekkürler! Lütfen Oyunfor'dan bağış yaparak destek olmayı unutma.
+	= Thank you for playing my game! Please don't forget to support  me! hope you enjoy the game!

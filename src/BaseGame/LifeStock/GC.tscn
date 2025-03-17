@@ -112,6 +112,8 @@ visible = false
 
 [node name="walk" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_4qivw")
+bus = &"Effect"
 
 [node name="run" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_puv7b")
+bus = &"Effect"
