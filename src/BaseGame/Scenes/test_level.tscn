@@ -1,8 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpdpojyg0yfiw"]
+[gd_scene load_steps=4 format=3 uid="uid://dpdpojyg0yfiw"]
 
 [ext_resource type="Environment" uid="uid://ofuuhkoyp2b0" path="res://DefaultEnviroment.tres" id="1_3u0qh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_430i5"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kcqb8"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="testLevel" type="Node3D"]
 
@@ -10,7 +13,13 @@
 environment = ExtResource("1_3u0qh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.84606, 0, 0, 0, 0.045524, 0, 0, 0, 10.0742, 0, -0.0335537, 0)
 mesh = SubResource("BoxMesh_430i5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_kcqb8")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87, 3.555)

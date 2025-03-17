@@ -17,3 +17,7 @@ res://BaseGame/FPS/fps.tscn
 res://BaseGame/Scenes/main_hub.tscn
 res://BaseGame/3D/TestLevel/test_level.gd
 res://BaseGame/FPS/fps.gd
+res://MainGame/Scenes/main_scene.tscn
+res://BaseGame/Scenes/test_level.tscn
+res://MainGame/3D/jail/Material/collision.tres
+res://MainGame/Scripts/main_scene.gd

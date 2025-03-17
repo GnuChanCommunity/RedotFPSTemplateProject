@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3ke6qmsbebo"]
+
+[ext_resource type="Environment" uid="uid://ofuuhkoyp2b0" path="res://DefaultEnviroment.tres" id="1_l3qk5"]
+[ext_resource type="Script" path="res://MainGame/Scripts/main_scene.gd" id="1_pmi61"]
+[ext_resource type="PackedScene" uid="uid://cmnwsf53agm28" path="res://MainGame/3D/jail/jail.glb" id="2_f4nwc"]
+
+[node name="MainScene" type="Node3D"]
+script = ExtResource("1_pmi61")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_l3qk5")
+
+[node name="jail" parent="." instance=ExtResource("2_f4nwc")]
