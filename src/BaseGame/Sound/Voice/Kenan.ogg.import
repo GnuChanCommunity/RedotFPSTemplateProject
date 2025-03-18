@@ -3,12 +3,16 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://7e4645wxpyb"
+<<<<<<< Updated upstream
 path="res://.godot/imported/Kenan.ogg-31abc2140f088c191ed1b23ecdc8d2ef.oggvorbisstr"
+=======
+path="res://.godot/imported/kenan.ogg-0080450250287921669f721ad107a68d.oggvorbisstr"
+>>>>>>> Stashed changes
 
 [deps]
 
-source_file="res://BaseGame/Sound/Voice/Kenan.ogg"
-dest_files=["res://.godot/imported/Kenan.ogg-31abc2140f088c191ed1b23ecdc8d2ef.oggvorbisstr"]
+source_file="res://BaseGame/Sound/Voice/kenan.ogg"
+dest_files=["res://.godot/imported/kenan.ogg-0080450250287921669f721ad107a68d.oggvorbisstr"]
 
 [params]
 

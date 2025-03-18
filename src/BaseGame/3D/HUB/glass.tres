@@ -1,9 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjaikn4wxrw0x"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://25yb66quc7ky"]
 
 [resource]
-resource_name = "light"
+resource_name = "glass"
 transparency = 1
 cull_mode = 2
-albedo_color = Color(0.901447, 0.742625, 0.752211, 0.105882)
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.905882, 0.905882, 0.905882, 0.156863)
 roughness = 0.5
-emission = Color(1, 1, 1, 1)

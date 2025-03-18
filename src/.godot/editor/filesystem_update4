@@ -1,5 +1,13 @@
+res://BaseGame/LifeStock/3D/cubeChanAnimation_/idl.res
+res://BaseGame/LifeStock/3D/cubeChanAnimation_/screet.res
+res://BaseGame/LifeStock/3D/cubeChanAnimation_/walk_backward.res
+res://BaseGame/LifeStock/3D/cubeChanAnimation_/walk_forward.res
 res://DefaultEnviroment.tres
+<<<<<<< Updated upstream
 res://BaseGame/FPS/fps.tscn
+=======
+res://BaseGame/LifeStock/GC.tscn
+>>>>>>> Stashed changes
 res://BaseGame/3D/HUB/gc.tres
 res://BaseGame/Shaders/main.gdshader
 res://BaseGame/3D/HUB/gcShader.tres
@@ -7,6 +15,7 @@ res://BaseGame/Shaders/vhs.gdshader
 res://DefaultTheme.tres
 res://BaseGame/3D/HUB/gc_light.tres
 res://BaseGame/3D/HUB/screen.tres
+<<<<<<< Updated upstream
 res://BaseGame/Shaders/tf2.gdshader
 res://BaseGame/Shaders/old_vhs.gdshader
 res://BaseGame/LifeStock/GC.tscn
@@ -18,3 +27,13 @@ res://BaseGame/Scripts/GLobalVAR.gd
 res://BaseGame/Scenes/test_level.gd
 res://BaseGame/Scenes/door.tscn
 res://BaseGame/Scripts/door.gd
+=======
+res://BaseGame/3D/TestLevel/material/tile_wall0_shader.tres
+res://BaseGame/3D/TestLevel/material/door.tres
+res://BaseGame/3D/TestLevel/material/collision.tres
+res://BaseGame/Shaders/tf2.gdshader
+res://BaseGame/Shaders/old_vhs.gdshader
+res://BaseGame/FPS/fps.tscn
+res://BaseGame/Scenes/main_hub.tscn
+res://BaseGame/3D/TestLevel/test_level.tscn
+>>>>>>> Stashed changes
