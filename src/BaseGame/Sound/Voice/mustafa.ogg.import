@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://cjeniqngr066p"
-path="res://.godot/imported/mustafa.ogg-dfd0a86f80a75fc9f3411cfea2bd77bd.oggvorbisstr"
+path="res://.godot/imported/Mustafa.ogg-9f3269bd3ac18979b93993e959dee0a4.oggvorbisstr"
 
 [deps]
 
-source_file="res://BaseGame/Sound/Voice/mustafa.ogg"
-dest_files=["res://.godot/imported/mustafa.ogg-dfd0a86f80a75fc9f3411cfea2bd77bd.oggvorbisstr"]
+source_file="res://BaseGame/Sound/Voice/Mustafa.ogg"
+dest_files=["res://.godot/imported/Mustafa.ogg-9f3269bd3ac18979b93993e959dee0a4.oggvorbisstr"]
 
 [params]
 
