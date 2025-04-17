@@ -1,6 +1,4 @@
-res://BaseGame/Scripts
-res://BaseGame/Scenes
-/home/archkubi/Export
-res://BaseGame/3D/HUB
-res://
-res://BaseGame/Shaders
+res://MainGame/Scripts
+res://MainGame/ReadyObject
+res://MainGame/3D
+res://MainGame/3D/

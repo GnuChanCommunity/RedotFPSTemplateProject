@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://BaseGame/FPS/fps.gd" id="1_ge6oy"]
 [ext_resource type="Texture2D" uid="uid://cu15jqtsbg4t3" path="res://BaseGame/Images/cursor0.png" id="2_6bq6q"]
+[ext_resource type="PackedScene" uid="uid://dnn8qr4cmr4u1" path="res://MainGame/3D/mine_lamp.glb" id="2_lv8wl"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/ui.gd" id="3_pyj23"]
 [ext_resource type="Texture2D" uid="uid://dvflpekblut54" path="res://BaseGame/Images/cursor1.png" id="3_y2nbq"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/settings.gd" id="4_2e1d4"]
+[ext_resource type="Shader" path="res://BaseGame/FPS/fps.gdshader" id="4_j1ivr"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/console_win.gd" id="5_agy71"]
-[ext_resource type="Shader" path="res://BaseGame/Shaders/vhs.gdshader" id="6_2a2n2"]
 [ext_resource type="Theme" uid="uid://cmqilhqwhy1tl" path="res://DefaultTheme.tres" id="6_p7vit"]
 [ext_resource type="AudioStream" uid="uid://bvvubnbpucehq" path="res://BaseGame/Sound/Voice/testing.ogg" id="9_kbicf"]
 [ext_resource type="FontFile" uid="uid://dpn24n1mjdh6q" path="res://BaseGame/Font/FreeSans.otf" id="10_w5cfi"]
@@ -60,21 +61,6 @@ albedo_color = Color(0.0835371, 0.457642, 0.552589, 1)
 shading_mode = 0
 albedo_color = Color(0.379116, 0.464699, 0.445347, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_fdl0u"]
-top_radius = 0.01
-bottom_radius = 0.005
-height = 2.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n36cc"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hibti"]
-shader = ExtResource("6_2a2n2")
-shader_parameter/wiggle = 0.03
-shader_parameter/wiggle_speed = 25.0
-shader_parameter/smear = 0.565
-shader_parameter/blur_samples = 15
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hx18i"]
 texture = ExtResource("2_6bq6q")
 
@@ -92,6 +78,25 @@ bg_color = Color(0.326543, 0.0382518, 0.577341, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ev6us"]
 bg_color = Color(0.32549, 0.0392157, 0.576471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mv56"]
+bg_color = Color(0.254902, 0.32549, 0.705882, 0.184314)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tixku"]
+shader = ExtResource("4_j1ivr")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.1
 
 [node name="fps" type="CharacterBody3D"]
 script = ExtResource("1_ge6oy")
@@ -126,6 +131,12 @@ transform = Transform3D(0.193973, 0, 0, 0, 0.193973, 0, 0, 0, 0.193973, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_oht2h")
 mesh = SubResource("BoxMesh_qqwbl")
+
+[node name="mine_lamp" parent="head/standCam/hitRay/hand0" instance=ExtResource("2_lv8wl")]
+transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 1.005, 0.455, 0.09)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="head/standCam/hitRay/hand0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.56106, 0)
 
 [node name="hand1" type="Node3D" parent="head/standCam/hitRay"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
@@ -208,14 +219,6 @@ transform = Transform3D(0.194, 0, 0, 0, 0.194, 0, 0, 0, 0.194, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_qqwbl")
 mesh = SubResource("BoxMesh_qqwbl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="head/standCam/hitRay"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00382042, 2.38419e-07, -1.74336)
-mesh = SubResource("CylinderMesh_fdl0u")
-surface_material_override/0 = SubResource("StandardMaterial3D_n36cc")
-
-[node name="Node3D" type="Node3D" parent="head/standCam/hitRay"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.62255)
-
 [node name="headRay" type="Node3D" parent="."]
 
 [node name="r0" type="RayCast3D" parent="headRay"]
@@ -249,74 +252,6 @@ target_position = Vector3(0, 1.295, 0)
 [node name="r7" type="RayCast3D" parent="headRay"]
 transform = Transform3D(0.999999, -0.00155319, 2.01422e-05, 0.00152532, 0.984302, 0.176484, -0.000293951, -0.176484, 0.984303, 0, 0.885626, 0)
 target_position = Vector3(0, 1.295, 0)
-
-[node name="shaders" type="CanvasLayer" parent="."]
-
-[node name="vhs" type="ColorRect" parent="shaders"]
-material = SubResource("ShaderMaterial_hibti")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ui" type="Control" parent="shaders"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_pyj23")
-
-[node name="bg" type="Panel" parent="shaders/ui"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="name" type="LineEdit" parent="shaders/ui"]
-layout_mode = 0
-offset_left = 93.0
-offset_top = 252.0
-offset_right = 339.403
-offset_bottom = 284.155
-placeholder_text = "What is your name"
-caret_blink = true
-
-[node name="turkish" type="Button" parent="shaders/ui"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 314.0
-offset_right = 156.0
-offset_bottom = 345.0
-text = "Turkish"
-
-[node name="english" type="Button" parent="shaders/ui"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 349.0
-offset_right = 156.0
-offset_bottom = 380.0
-text = "English"
-
-[node name="lang" type="Label" parent="shaders/ui"]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 320.0
-offset_right = 218.0
-offset_bottom = 343.0
-
-[node name="warning" type="Label" parent="shaders/ui"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 360.0
-offset_right = 712.0
-offset_bottom = 510.0
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -574,8 +509,87 @@ offset_right = 597.0
 offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("10_w5cfi")
 
-[connection signal="pressed" from="shaders/ui/turkish" to="UI/settings" method="_on_turkish_pressed"]
-[connection signal="pressed" from="shaders/ui/english" to="UI/settings" method="_on_english_pressed"]
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_pyj23")
+
+[node name="bg" type="Panel" parent="ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="LineEdit" parent="ui"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 252.0
+offset_right = 339.403
+offset_bottom = 284.155
+placeholder_text = "What is your name"
+caret_blink = true
+
+[node name="turkish" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 314.0
+offset_right = 156.0
+offset_bottom = 345.0
+text = "Turkish"
+
+[node name="english" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 349.0
+offset_right = 156.0
+offset_bottom = 380.0
+text = "English"
+
+[node name="lang" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 320.0
+offset_right = 218.0
+offset_bottom = 343.0
+
+[node name="warning" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 360.0
+offset_right = 712.0
+offset_bottom = 510.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="water" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0mv56")
+
+[node name="vhs" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_tixku")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
 [connection signal="close_requested" from="UI/settings" to="UI/settings" method="_on_close_requested"]
 [connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/MusicVolume/MusicVolumeSlider" to="UI/settings" method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="UI/settings/ScrollContainer/VBoxContainer/EffectVolume/EffectVolumeSlider" to="UI/settings" method="_on_effect_volume_slider_value_changed"]
@@ -586,3 +600,5 @@ theme_override_fonts/font = ExtResource("10_w5cfi")
 [connection signal="toggled" from="UI/settings/ScrollContainer/VBoxContainer/headShake/headShakeCheckBox" to="UI/settings" method="_on_head_shake_check_box_toggled"]
 [connection signal="pressed" from="UI/settings/ScrollContainer/VBoxContainer/fullScreen/fullScreenCheckBox" to="UI/settings" method="_on_full_screen_check_box_pressed"]
 [connection signal="close_requested" from="UI/consoleWin" to="UI/consoleWin" method="_on_close_requested"]
+[connection signal="pressed" from="ui/turkish" to="UI/settings" method="_on_turkish_pressed"]
+[connection signal="pressed" from="ui/english" to="UI/settings" method="_on_english_pressed"]

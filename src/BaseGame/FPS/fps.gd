@@ -99,34 +99,17 @@ func _input(event):
 			rotate_y(deg_to_rad(-event.relative.x * GLobalVar.PlayerSettings["MouseSpeed"]))
 			head.rotate_x(deg_to_rad(-event.relative.y * GLobalVar.PlayerSettings["MouseSpeed"]))
 			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	if Input.is_action_pressed('left_m'):
-			if $head/standCam/hitRay.is_colliding():
-				if $head/standCam/hitRay.get_collider().get_node('.').is_in_group('Object'):
-					ObjectNode=$head/standCam/hitRay.get_collider().get_node('.')
-					ObjectNode.global_position=$head/standCam/hitRay/Node3D.global_position
-			
-			if ObjectNode!=null:
-				ObjectNode.global_position=$head/standCam/hitRay/Node3D.global_position
-	elif Input.is_action_just_released('left_m'):
-			Tutuyor=true
-			ObjectNode=null
-				
-				
-	if $head/standCam/hitRay.is_colliding():
-		$head/standCam/hitRay/MeshInstance3D.visible=true
-	elif not $head/standCam/hitRay.is_colliding():
-		$head/standCam/hitRay/MeshInstance3D.visible=false
 
-var Tutuyor = true
-var ObjectPos = Vector3()
-var ObjectNode = null
-
-func  _process(delta: float) -> void:
+func  _process(_delta: float) -> void:
 	if GLobalVar.PlayerSettings["CanWalk"] and not GLobalVar.PlayerSettings["GiveLife"] and not GLobalVar.PlayerSettings["UsingPC"]:
 		_CheckItem()
 		_ChangeHand()
 		_changeFOV()
 
+	if GLobalVar.PlayerSettings["Swim"]:
+		$CanvasLayer/water.visible = true
+	else:
+		$CanvasLayer/water.visible = false
 
 func _duckORcrawling():
 	if Input.is_action_pressed("ctrl"):
@@ -161,7 +144,7 @@ func _duckORcrawling():
 				$crawling.disabled = true
 
 func _SpeedChange():
-	if not Input.is_action_pressed("w") and not Input.is_action_pressed("shift"):
+	if not Input.is_action_pressed("shift"):
 		if not $stand.disabled:
 			GLobalVar.PlayerSettings["Speed"] = 3
 		elif not $duck.disabled:
@@ -172,7 +155,7 @@ func _SpeedChange():
 func _Run(delta):
 	# run
 	if Input.is_action_pressed("w") and Input.is_action_pressed("shift"):
-		if GLobalVar.PlayerSettings["CanRun"]:
+		if GLobalVar.PlayerSettings["CanRun"] and not $duck.disabled and not $crawling.disabled:
 			if GLobalVar.PlayerSettings["Speed"] < GLobalVar.PlayerSettings["MaxSpeed"]:
 				GLobalVar.PlayerSettings["Speed"] += 5 * delta
 			if GLobalVar.PlayerSettings["FOV"] < GLobalVar.PlayerSettings["FOVMAX"]+10:
@@ -197,11 +180,21 @@ func _jump():
 		if GLobalVar.PlayerSettings["CanJump"]:
 			velocity.y = GLobalVar.PlayerSettings["JumpHeight"]
 
+	if Input.is_action_pressed("space") and GLobalVar.PlayerSettings["Swim"]:
+		velocity.y = GLobalVar.PlayerSettings["JumpHeight"]-2
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+
+	if GLobalVar.PlayerSettings["Swim"]:
+		if not Input.is_action_pressed("space"):
+			velocity += Vector3(0, -0.1, 0) * delta
+	else:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+
+
 
 	if GLobalVar.PlayerSettings["CanWalk"] and not GLobalVar.PlayerSettings["GiveLife"] and not GLobalVar.PlayerSettings["UsingPC"]:
 		_jump()

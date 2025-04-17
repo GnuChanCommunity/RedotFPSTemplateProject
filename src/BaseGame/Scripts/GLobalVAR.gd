@@ -28,7 +28,8 @@ var PlayerSettings = {
 	"OpenConsole":false,
 	"OpenSettings":false,
 	"screenMode":false,
-	"talkMode":false
+	"talkMode":false,
+	"Swim": false
 }
 
 var EnergyReady0 = false
@@ -49,3 +50,19 @@ var settings3 = false
 var settings4 = false
 var settings5 = false
 var settings6 = false
+
+# Main Game
+var FirstDoorKey  = false
+var FirstDoor_ray  = false
+
+var SecondDoorKey = false
+var ThirdDoorKey  = false
+
+var ThirdDoor0 = false
+var ThirdDoor1 = false
+var ThirdDoor2 = false
+var ThirdDoor3 = false
+
+var ScreetDoor    = true
+var ScreetWall    = false
+var ScreetEnd     = false

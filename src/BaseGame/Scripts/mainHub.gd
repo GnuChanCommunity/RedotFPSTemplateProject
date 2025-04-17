@@ -43,7 +43,7 @@ var lastTalk   = preload("res://BaseGame/Sound/Voice/lastTalk.ogg")
 
 # Turkish names
 var cevik    = preload("res://BaseGame/Sound/Voice/cevik.ogg")
-var mustafa  = preload("res://BaseGame/Sound/Voice/mustafa.ogg")
+var mustafa  = preload("res://BaseGame/Sound/Voice/Mustafa.ogg")
 var refik    = preload("res://BaseGame/Sound/Voice/refik.ogg")
 var Werquast = preload("res://BaseGame/Sound/Voice/Werquast​.ogg")
 var Ahmet    = preload("res://BaseGame/Sound/Voice/Ahmet.ogg")
@@ -98,7 +98,7 @@ var Yasin    = preload("res://BaseGame/Sound/Voice/Yasin.ogg")
 var Taylan   = preload("res://BaseGame/Sound/Voice/Taylan.ogg")
 var Bora     = preload("res://BaseGame/Sound/Voice/Bora.ogg")
 var Sarp     = preload("res://BaseGame/Sound/Voice/Sarp.ogg")
-var Kenan    = preload("res://BaseGame/Sound/Voice/kenan.ogg")
+var Kenan    = preload("res://BaseGame/Sound/Voice/Kenan.ogg")
 var Arda     = preload("res://BaseGame/Sound/Voice/Arda.ogg")
 var Dogan    = preload("res://BaseGame/Sound/Voice/dogan.ogg")
 var Gorkem   = preload("res://BaseGame/Sound/Voice/gorkem.ogg")
@@ -134,7 +134,7 @@ func _ready() -> void:
 	GLobalVar.PlayerSettings["CanWalk"] = false
 	GLobalVar.PlayerSettings["CanJump"] = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	$fps/shaders/ui/name.grab_focus()
+	$fps/ui/name.grab_focus()
 	$pcArea/pcCAM/UI.visible = false
 
 func _rotatePosition():
@@ -272,15 +272,14 @@ func _on_sef_anim_animation_finished(anim_name: StringName) -> void:
 # Door
 func _Door():
 	if Input.is_action_just_pressed("left_m"):
-		if GLobalVar.FusionReady and DoorArea:
-			if not DoorOpen:
-				$Cardis/Cardis_portable/AnimationPlayer.play("doorAction")
-				$DoorArea/Open.play()
-				DoorOpen = true
-			else:
-				$Cardis/Cardis_portable/AnimationPlayer.play_backwards("doorAction")
-				$DoorArea/Close.play()
-				DoorOpen = false
+		if not DoorOpen and DoorArea:
+			$Cardis/Cardis_portable/AnimationPlayer.play("doorAction")
+			$DoorArea/Open.play()
+			DoorOpen = true
+		elif DoorOpen and DoorArea:
+			$Cardis/Cardis_portable/AnimationPlayer.play_backwards("doorAction")
+			$DoorArea/Close.play()
+			DoorOpen = false
 # Door
 
 func _PortalEnter_LevelChange():
@@ -300,133 +299,134 @@ func _PortalEnter_LevelChange():
 					if "turkish" == GLobalVar.PlayerSettings["lang"]:
 						if "cevik" or "çevik" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = cevik
-						elif "mustafa" == GLobalVar.PlayerSettings["Name"]:
+						if "mustafa" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = mustafa
 						elif "refik" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = refik
-						elif "Werquast​" == GLobalVar.PlayerSettings["Name"]:
+
+						elif "werquast​" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Werquast
-						elif "Ahmet" == GLobalVar.PlayerSettings["Name"]:
+						elif "ahmet" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Ahmet
-						elif "Mehmet" == GLobalVar.PlayerSettings["Name"]:
+						elif "mehmet" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Mehmet
 						elif "ali" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Ali
 						elif "hasan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Hasan
-						elif "Huseyin" == GLobalVar.PlayerSettings["Name"]:
+						elif "huseyin" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Huseyin
-						elif "Hasan" == GLobalVar.PlayerSettings["Name"]:
+						elif "hasan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Hasan
-						elif "İbrahim" == GLobalVar.PlayerSettings["Name"]:
+						elif "ibrahim" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = ibrahim
-						elif "Osman" == GLobalVar.PlayerSettings["Name"]:
+						elif "osman" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Osman
-						elif "Yusuf" == GLobalVar.PlayerSettings["Name"]:
+						elif "yusuf" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Yusuf
-						elif "Emre" == GLobalVar.PlayerSettings["Name"]:
+						elif "emre" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Emre
-						elif "Burak" == GLobalVar.PlayerSettings["Name"]:
+						elif "burak" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Burak
-						elif "Fatih" == GLobalVar.PlayerSettings["Name"]:
+						elif "fatih" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Fatih
-						elif "Ramazan" == GLobalVar.PlayerSettings["Name"]:
+						elif "ramazan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Ramazan
-						elif "Enes" == GLobalVar.PlayerSettings["Name"]:
+						elif "enes" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Enes
-						elif "Ömer" == GLobalVar.PlayerSettings["Name"]:
+						elif "ömer" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Omer
-						elif "Murat" == GLobalVar.PlayerSettings["Name"]:
+						elif "murat" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Murat
-						elif "Selim" == GLobalVar.PlayerSettings["Name"]:
+						elif "selim" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Selim
-						elif "Furkan" == GLobalVar.PlayerSettings["Name"]:
+						elif "furkan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Furkan
-						elif "Kadir" == GLobalVar.PlayerSettings["Name"]:
+						elif "kadir" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Kadir
-						elif "Abdullah" == GLobalVar.PlayerSettings["Name"]:
+						elif "abdullah" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Abdullah
-						elif "Kubilay" == GLobalVar.PlayerSettings["Name"]:
+						elif "kubilay" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Kubilay
-						elif "Eren" == GLobalVar.PlayerSettings["Name"]:
+						elif "eren" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Eren
-						elif "Gökberk" == GLobalVar.PlayerSettings["Name"]:
+						elif "gökberk" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Gokberk
-						elif "İsmail" == GLobalVar.PlayerSettings["Name"]:
+						elif "ismail" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Ismail
-						elif "Hakkı" == GLobalVar.PlayerSettings["Name"]:
+						elif "hakkı" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Hakki
-						elif "Samet" == GLobalVar.PlayerSettings["Name"]:
+						elif "samet" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Samet
-						elif "Davut" == GLobalVar.PlayerSettings["Name"]:
+						elif "davut" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Davut
-						elif "Süleyman" == GLobalVar.PlayerSettings["Name"]:
+						elif "süleyman" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Suleyman
-						elif "Onur" == GLobalVar.PlayerSettings["Name"]:
+						elif "onur" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Onur
-						elif "Uğur" == GLobalVar.PlayerSettings["Name"]:
+						elif "uğur" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Ugur
-						elif "Batuhan" == GLobalVar.PlayerSettings["Name"]:
+						elif "batuhan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Batuhan
-						elif "Serkan" == GLobalVar.PlayerSettings["Name"]:
+						elif "serkan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Serkan
-						elif "Serdar" == GLobalVar.PlayerSettings["Name"]:
+						elif "serdar" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Serdar146
-						elif "Barış" == GLobalVar.PlayerSettings["Name"]:
+						elif "barış" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Baris
-						elif "Erkan" == GLobalVar.PlayerSettings["Name"]:
+						elif "erkan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Erkan
-						elif "Cem" == GLobalVar.PlayerSettings["Name"]:
+						elif "cem" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Cem_lifeIsShit
-						elif "Cemal" == GLobalVar.PlayerSettings["Name"]:
+						elif "cemal" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Cemal
-						elif "Tuncay" == GLobalVar.PlayerSettings["Name"]:
+						elif "tuncay" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Tuncay
-						elif "Sinan" == GLobalVar.PlayerSettings["Name"]:
+						elif "sinan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Sinan
-						elif "Eray" == GLobalVar.PlayerSettings["Name"]:
+						elif "eray" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Eray
-						elif "Cihan" == GLobalVar.PlayerSettings["Name"]:
+						elif "cihan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Cihan
-						elif "Can" == GLobalVar.PlayerSettings["Name"]:
+						elif "can" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Can
-						elif "Berkay" == GLobalVar.PlayerSettings["Name"]:
+						elif "berkay" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Berkay
-						elif "Alper" == GLobalVar.PlayerSettings["Name"]:
+						elif "alper" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Alper
-						elif "Alp" == GLobalVar.PlayerSettings["Name"]:
+						elif "alp" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Alp
-						elif "Deniz" == GLobalVar.PlayerSettings["Name"]:
+						elif "deniz" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Deniz
-						elif "Tolga" == GLobalVar.PlayerSettings["Name"]:
+						elif "tolga" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Tolga
-						elif "Harun" == GLobalVar.PlayerSettings["Name"]:
+						elif "harun" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Harun
-						elif "Yasin" == GLobalVar.PlayerSettings["Name"]:
+						elif "yasin" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Yasin
-						elif "Taylan" == GLobalVar.PlayerSettings["Name"]:
+						elif "taylan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Taylan
-						elif "Bora" == GLobalVar.PlayerSettings["Name"]:
+						elif "bora" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Bora
-						elif "Sarp" == GLobalVar.PlayerSettings["Name"]:
+						elif "sarp" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Sarp
-						elif "Kenan" == GLobalVar.PlayerSettings["Name"]:
+						elif "kenan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Kenan
-						elif "Arda" == GLobalVar.PlayerSettings["Name"]:
+						elif "arda" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Arda
-						elif "Doğan" == GLobalVar.PlayerSettings["Name"]:
+						elif "doğan" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Dogan
-						elif "Görkem" == GLobalVar.PlayerSettings["Name"]:
+						elif "görkem" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Gorkem
-						elif "Çağatay" == GLobalVar.PlayerSettings["Name"]:
+						elif "çağatay" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Cagatay
-						elif "Metin" == GLobalVar.PlayerSettings["Name"]:
+						elif "metin" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Metin
-						elif "Nihat" == GLobalVar.PlayerSettings["Name"]:
+						elif "nihat" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Nihat
-						elif "Şahin" == GLobalVar.PlayerSettings["Name"]:
+						elif "şahin" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Sahin
-						elif "Adem" == GLobalVar.PlayerSettings["Name"]:
+						elif "adem" == GLobalVar.PlayerSettings["Name"]:
 							Talk.stream = Adem
 						else:
 							Talk.stream = isimsiz
@@ -459,9 +459,8 @@ func _PortalEnter_LevelChange():
 					Talk.play()
 					TalkEnd = true
 
-	if hello and name_ and welcome and Talk:
-		if not Talk.playing:
-			pass # game is starting
+	if TalkEnd and not Talk.playing:
+		get_tree().change_scene_to_file("res://MainGame/Scenes/main_scene.tscn")
 
 var PlayFirstTalkWalk = false
 func _on_portal_ready_animation_finished(anim_name: StringName) -> void:

@@ -31,7 +31,7 @@ func  _name():
 				firstTime = true
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_name()
 	if $name.visible:
 		$lang.text = GLobalVar.PlayerSettings["lang"]

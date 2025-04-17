@@ -1,0 +1,17 @@
+res://BaseGame/Scenes/main_hub.tscn
+res://MainGame/3D/mine_lamp_glass.tres
+res://MainGame/3D/mine_lamp_light.tres
+res://BaseGame/FPS/fps.gdshader
+res://DefaultTheme.tres
+res://DefaultEnviroment.tres
+res://MainGame/3D/collision.tres
+res://MainGame/3D/lamb_light.tres
+res://MainGame/3D/table_screen.tres
+res://MainGame/3D/door.tres
+res://BaseGame/Shaders/vhs.gdshader
+res://BaseGame/FPS/fps.tscn
+res://MainGame/Scenes/main_scene.tscn
+res://MainGame/ReadyObject/first_door.tscn
+res://MainGame/ReadyObject/screet_door.tscn
+res://MainGame/Scripts/main_scene.gd
+res://BaseGame/Scripts/GLobalVAR.gd

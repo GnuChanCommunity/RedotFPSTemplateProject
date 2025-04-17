@@ -22,11 +22,10 @@ func _Console():
 
 			var line_count = COutput.get_line_count()
 			COutput.scroll_vertical = line_count
-			
 
 			UInput.text = ""
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_Console()
 
 func _on_close_requested() -> void:

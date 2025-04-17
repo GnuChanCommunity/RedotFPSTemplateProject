@@ -7,7 +7,7 @@ var st: AnimationNodeStateMachinePlayback
 func _ready() -> void:
 	st = get("parameters/playback")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if GLobalVar.PlayerSettings["GiveLife"]:
 		if Input.is_action_pressed("w"):
 			st.travel("cubeChanAnim_walk_forward")

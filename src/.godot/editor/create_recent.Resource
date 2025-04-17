@@ -1,1 +1,1 @@
-ShaderMaterial
+StandardMaterial3D

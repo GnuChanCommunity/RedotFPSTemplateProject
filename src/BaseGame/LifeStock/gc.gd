@@ -27,7 +27,7 @@ func  _walSound():
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_walSound()
 
 func _physics_process(delta: float) -> void:

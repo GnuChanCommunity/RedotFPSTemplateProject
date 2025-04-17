@@ -51,7 +51,7 @@ _subresources={
 },
 "collision": {
 "use_external/enabled": true,
-"use_external/path": "res://BaseGame/3D/HUB/Collision.tres"
+"use_external/path": "res://BaseGame/3D/HUB/collision.tres"
 },
 "energy": {
 "use_external/enabled": true,

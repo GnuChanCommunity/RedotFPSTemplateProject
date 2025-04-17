@@ -38,7 +38,7 @@ func _Settings():
 						self.hide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_Settings()
 
 func _on_close_requested() -> void:

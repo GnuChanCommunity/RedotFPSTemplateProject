@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bx0ip125yuhy1"]
+
+[ext_resource type="Texture2D" uid="uid://b5dbyiay1wbr7" path="res://MainGame/3D/jail_jail_vckjca2_2K_Albedo.jpg" id="1_0pte5"]
+[ext_resource type="Texture2D" uid="uid://cjsxn2q2y82fg" path="res://MainGame/3D/jail_jail_vckjca2_2K_Normal.jpg" id="2_kp4ba"]
+
+[resource]
+resource_name = "EasterMT"
+cull_mode = 2
+albedo_texture = ExtResource("1_0pte5")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_kp4ba")

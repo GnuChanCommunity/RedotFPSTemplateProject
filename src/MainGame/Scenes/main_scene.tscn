@@ -1,8 +1,164 @@
-[gd_scene load_steps=4 format=3 uid="uid://br3ke6qmsbebo"]
+[gd_scene load_steps=26 format=3 uid="uid://br3ke6qmsbebo"]
 
 [ext_resource type="Environment" uid="uid://ofuuhkoyp2b0" path="res://DefaultEnviroment.tres" id="1_l3qk5"]
 [ext_resource type="Script" path="res://MainGame/Scripts/main_scene.gd" id="1_pmi61"]
-[ext_resource type="PackedScene" uid="uid://cmnwsf53agm28" path="res://MainGame/3D/jail/jail.glb" id="2_f4nwc"]
+[ext_resource type="PackedScene" uid="uid://gb10q5mgtc84" path="res://MainGame/3D/jail.glb" id="3_vrg5p"]
+[ext_resource type="PackedScene" uid="uid://cns1uy01wn0kj" path="res://BaseGame/FPS/fps.tscn" id="4_wxp75"]
+[ext_resource type="PackedScene" uid="uid://cdjirwx81g8ab" path="res://MainGame/ReadyObject/lamp.tscn" id="5_rvhe8"]
+[ext_resource type="PackedScene" uid="uid://b10n3lisq7g14" path="res://MainGame/3D/table.glb" id="6_0cvgb"]
+[ext_resource type="PackedScene" uid="uid://crjot2w3owcvs" path="res://MainGame/3D/bad.glb" id="7_7t088"]
+[ext_resource type="PackedScene" uid="uid://cn5kiew6ulpyi" path="res://MainGame/3D/door.glb" id="8_jyks2"]
+[ext_resource type="AudioStream" uid="uid://dyqt6keicusoe" path="res://MainGame/Sounds/Effects/idl_room0.ogg" id="9_6cvwn"]
+[ext_resource type="AudioStream" uid="uid://beir3dl1i3ms4" path="res://MainGame/Sounds/Effects/idl_room_1.ogg" id="10_57g7m"]
+[ext_resource type="PackedScene" uid="uid://b5jit2a1q2hbp" path="res://MainGame/3D/RadioX.glb" id="11_57g7m"]
+[ext_resource type="AudioStream" uid="uid://n3jic3x3lfpi" path="res://MainGame/Sounds/Effects/radio_music_0.ogg" id="12_sjrf8"]
+[ext_resource type="PackedScene" uid="uid://dnn8qr4cmr4u1" path="res://MainGame/3D/mine_lamp.glb" id="13_tnoxv"]
+[ext_resource type="PackedScene" uid="uid://bgvtbustdy2sp" path="res://MainGame/ReadyObject/first_door.tscn" id="14_1m0bx"]
+[ext_resource type="PackedScene" uid="uid://vspd60c4ad0f" path="res://MainGame/ReadyObject/screet_door.tscn" id="15_dakx8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxyjo"]
+size = Vector3(1.08118, 2.53904, 1.48686)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68egw"]
+size = Vector3(1.32324, 1, 1.5296)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5gqsi"]
+size = Vector3(3.21817, 1.56116, 1.22693)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wg1o5"]
+size = Vector3(3.11983, 0.109924, 1.6037)
+
+[sub_resource type="Shader" id="Shader_1m0bx"]
+code = "// NOTE: Shader automatically converted from Redot Engine 4.3.1.rc.1's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform sampler2D texture_refraction : filter_linear_mipmap, repeat_enable;
+uniform float refraction : hint_range(-1.0, 1.0, 0.001);
+uniform vec4 refraction_texture_channel;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
+
+uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
+uniform float normal_scale : hint_range(-16.0, 16.0);
+varying vec3 uv1_triplanar_pos;
+
+uniform float uv1_blend_sharpness : hint_range(0.0, 150.0, 0.001);
+varying vec3 uv1_power_normal;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
+
+	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
+	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
+	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
+	TANGENT = inverse(MODEL_NORMAL_MATRIX) * normalize(TANGENT);
+
+	BINORMAL = vec3(0.0, 1.0, 0.0) * abs(normal.x);
+	BINORMAL += vec3(0.0, 0.0, -1.0) * abs(normal.y);
+	BINORMAL += vec3(0.0, 1.0, 0.0) * abs(normal.z);
+	BINORMAL = inverse(MODEL_NORMAL_MATRIX) * normalize(BINORMAL);
+
+	// UV1 Triplanar: Enabled (with World Triplanar)
+	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + TIME * 0.01;
+	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
+	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
+}
+
+vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
+	vec4 samp = vec4(0.0);
+	samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
+	samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
+	samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
+	return samp;
+}
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+
+	// Normal Map: Enabled
+	NORMAL_MAP = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+
+	// Refraction: Enabled (with normal map texture)
+	vec3 unpacked_normal = NORMAL_MAP;
+	unpacked_normal.xy = unpacked_normal.xy * 2.0 - 1.0;
+	unpacked_normal.z = sqrt(max(0.0, 1.0 - dot(unpacked_normal.xy, unpacked_normal.xy)));
+	vec3 ref_normal = normalize(mix(
+			NORMAL,
+			TANGENT * unpacked_normal.x + BINORMAL * unpacked_normal.y + NORMAL * unpacked_normal.z,
+			NORMAL_MAP_DEPTH));
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(triplanar_texture(texture_refraction, uv1_power_normal, uv1_triplanar_pos), refraction_texture_channel) * refraction;
+
+	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
+	EMISSION += textureLod(screen_texture, ref_ofs, ROUGHNESS * 8.0).rgb * ref_amount * EXPOSURE;
+	ALBEDO *= 1.0 - ref_amount;
+	// Force transparency on the material (required for refraction).
+	ALPHA = 1.0;
+}
+
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1m0bx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1m0bx"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_1m0bx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dakx8"]
+render_priority = 0
+shader = SubResource("Shader_1m0bx")
+shader_parameter/albedo = Color(0.211765, 0.709804, 0.768627, 0.560784)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = null
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.675, 0.675, 0.675)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_1m0bx")
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_1m0bx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dakx8"]
+material = SubResource("ShaderMaterial_dakx8")
+size = Vector3(6.815, 4.9, 18.035)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1m0bx"]
+size = Vector3(5.55054, 4.51007, 10.5722)
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_pmi61")
@@ -10,4 +166,169 @@ script = ExtResource("1_pmi61")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_l3qk5")
 
-[node name="jail" parent="." instance=ExtResource("2_f4nwc")]
+[node name="fps" parent="." instance=ExtResource("4_wxp75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.91747, 0.00490355, 2.7343)
+
+[node name="lights" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.269512, 2.31289, 0)
+
+[node name="starting_lights" type="Node3D" parent="lights"]
+
+[node name="light_object" parent="lights/starting_lights" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.47402, 1.57254, 2.13721)
+
+[node name="light_object2" parent="lights/starting_lights" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151291, 1.57254, 2.13721)
+
+[node name="light_object3" parent="lights/starting_lights" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151291, 1.57254, -1.93903)
+
+[node name="starting_lights2" type="Node3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48882, 0, 0)
+
+[node name="light_object" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23084, 1.57254, 3.01464)
+
+[node name="light_object17" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23084, 0.911426, 9.80001)
+
+[node name="light_object19" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23084, 0.109521, 13.6567)
+
+[node name="light_object8" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23084, 0.615949, -1.63127)
+
+[node name="light_object3" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.979421, -0.20183, 0, 0.20183, 0.979421, 0, 0, 0, 1, -3.49294, 1.40163, 2.5101)
+
+[node name="light_object5" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.979421, -0.20183, 0, 0.20183, 0.979421, 0, 0, 0, 1, -7.15657, 0.596919, 2.5101)
+
+[node name="light_object7" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -11.7061, -0.392604, 2.5101)
+
+[node name="light_object10" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -16.7582, -0.423348, 2.5101)
+
+[node name="light_object12" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -16.7582, -0.423348, 9.42757)
+
+[node name="light_object14" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -16.7582, -0.423348, 19.2565)
+
+[node name="light_object24" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -8.62327, -0.423348, 19.2565)
+
+[node name="light_object26" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -2.3684, -0.423348, 19.2565)
+
+[node name="light_object27" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, 0.480037, -0.423348, 19.2565)
+
+[node name="light_object15" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -16.7582, -0.423348, 14.8483)
+
+[node name="light_object16" parent="lights/starting_lights2" instance=ExtResource("5_rvhe8")]
+transform = Transform3D(0.993187, -0.116532, 0, 0.116532, 0.993187, 0, 0, 0, 1, -12.3024, -0.423348, 14.9593)
+
+[node name="jail" parent="." instance=ExtResource("3_vrg5p")]
+
+[node name="EasterDoor" parent="jail" instance=ExtResource("15_dakx8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75322, 0.00689967, -0.0793267)
+
+[node name="extraObject" type="Node3D" parent="."]
+
+[node name="table2" parent="extraObject" instance=ExtResource("6_0cvgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75502, 0.00490367, 0.971466)
+
+[node name="bad" parent="extraObject" instance=ExtResource("7_7t088")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77794, 0.00490355, 4.23883)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="extraObject"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="extraObject/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.417462, 1.28386, -0.200831)
+shape = SubResource("BoxShape3D_nxyjo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="extraObject/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4686, 0.691238, 0.762136)
+shape = SubResource("BoxShape3D_nxyjo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="extraObject/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.09218, 0.731596, 0.791613)
+shape = SubResource("BoxShape3D_68egw")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="extraObject/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75204, 1.01217, 4.09563)
+shape = SubResource("BoxShape3D_5gqsi")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="extraObject/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73647, 1.24859, 0.827249)
+shape = SubResource("BoxShape3D_wg1o5")
+
+[node name="door2" parent="." instance=ExtResource("8_jyks2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.286259, 0.00490355, -0.202366)
+
+[node name="audio" type="Node3D" parent="."]
+
+[node name="IdlRoom0" type="AudioStreamPlayer3D" parent="audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77373, 3.02554, 2.54283)
+stream = ExtResource("9_6cvwn")
+autoplay = true
+
+[node name="IdlRoom1" type="AudioStreamPlayer3D" parent="audio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77373, 3.02554, 2.54283)
+stream = ExtResource("10_57g7m")
+autoplay = true
+
+[node name="RadioX" parent="audio" instance=ExtResource("11_57g7m")]
+transform = Transform3D(-0.111456, -0.0348171, -0.003641, -0.034834, 0.11151, 3.04529e-09, 0.00347537, 0.00108566, -0.116767, 2.44932, -46.8287, 6.38367)
+
+[node name="RadioMusic0" type="AudioStreamPlayer3D" parent="audio/RadioX"]
+transform = Transform3D(-8.16652, -2.55234, 0.254645, -2.5511, 8.17049, 0.0795475, -0.266781, 2.08532e-07, -8.55571, 1.34151, 7.47049, 0.211647)
+stream = ExtResource("12_sjrf8")
+autoplay = true
+
+[node name="mine_lamp" parent="audio/RadioX" instance=ExtResource("13_tnoxv")]
+transform = Transform3D(-1.63753, -0.701893, -1.5385, -0.511541, 2.24689, -0.480604, 1.61182, 7.66616e-08, -1.71557, 3.59628, 10.9059, -6.35448)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="audio/RadioX/mine_lamp"]
+transform = Transform3D(3.63637, 2.73383e-06, -2.01464e-05, 3.59599e-07, 3.63636, -9.81873e-07, 2.98023e-06, 1.67395e-06, 3.63637, 5.72205e-06, -2.56108, 1.90735e-06)
+
+[node name="mine_lamp2" parent="audio/RadioX" instance=ExtResource("13_tnoxv")]
+transform = Transform3D(-1.67662, -0.399464, -1.60329, -0.370464, 2.31687, -0.189848, 1.61023, 0.117103, -1.71306, 3.36451, 9.37515, 43.0708)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="audio/RadioX/mine_lamp2"]
+transform = Transform3D(3.63637, 2.73383e-06, -2.01464e-05, 3.59599e-07, 3.63636, -9.81873e-07, 2.98023e-06, 1.67395e-06, 3.63637, 5.72205e-06, -2.56108, 1.90735e-06)
+
+[node name="mine_lamp5" parent="audio/RadioX" instance=ExtResource("13_tnoxv")]
+transform = Transform3D(-1.5653, -0.704646, -1.61073, -0.74095, 2.22015, -0.251196, 1.59436, 0.33997, -1.69811, 23.6985, 17.167, 65.849)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="audio/RadioX/mine_lamp5"]
+transform = Transform3D(3.63637, 2.73383e-06, -2.01464e-05, 3.59599e-07, 3.63636, -9.81873e-07, 2.98023e-06, 1.67395e-06, 3.63637, 5.72205e-06, -2.56108, 1.90735e-06)
+omni_range = 6.09581
+
+[node name="firstDoor" parent="." instance=ExtResource("14_1m0bx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02844, 0.00490379, 3.26488)
+
+[node name="WATER" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.635621, -50.0839, -7.96529)
+mesh = SubResource("BoxMesh_dakx8")
+skeleton = NodePath("")
+
+[node name="WaterArea" type="Area3D" parent="WATER"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WATER/WaterArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.832398, -1.26907, -2.11297)
+shape = SubResource("BoxShape3D_1m0bx")
+
+[node name="mine_lamp" parent="." instance=ExtResource("13_tnoxv")]
+transform = Transform3D(-8.64948e-09, 0, 0.197877, 0, 0.197877, 0, -0.197877, 0, -8.64948e-09, 5.5859, 0.975232, -0.54384)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="mine_lamp"]
+transform = Transform3D(5.05364, 0, 0, 0, 5.05364, 0, 0, 0, 5.05364, 0, -2.86308, 0)
+
+[connection signal="body_entered" from="WATER/WaterArea" to="." method="_on_water_area_body_entered"]
+[connection signal="body_exited" from="WATER/WaterArea" to="." method="_on_water_area_body_exited"]
+
+[editable path="lights/starting_lights/light_object"]
