@@ -52,6 +52,15 @@ var settings5 = false
 var settings6 = false
 
 # Main Game
+var day = 1
+var day1_finish = false
+var day2_finish = false
+var day3_finish = false
+var day4_finish = false
+var day5_finish = false
+var daysEnd = false
+
+
 var FirstDoorKey  = false
 var FirstDoor_ray  = false
 
@@ -63,6 +72,6 @@ var ThirdDoor1 = false
 var ThirdDoor2 = false
 var ThirdDoor3 = false
 
-var ScreetDoor    = true
+var ScreetDoor    = false
 var ScreetWall    = false
 var ScreetEnd     = false

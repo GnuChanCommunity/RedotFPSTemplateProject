@@ -17,6 +17,7 @@ extends CharacterBody3D
 	$head/standCam/hitRay/hand8, $head/standCam/hitRay/hand9,
 ]
 
+
 # head shake
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
@@ -91,7 +92,7 @@ func _ready():
 	_CheckItem()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-var AvailableObject = null
+
 
 func _input(event):
 	if GLobalVar.PlayerSettings["CanWalk"] and not GLobalVar.PlayerSettings["GiveLife"] and not GLobalVar.PlayerSettings["UsingPC"]:
@@ -110,6 +111,9 @@ func  _process(_delta: float) -> void:
 		$CanvasLayer/water.visible = true
 	else:
 		$CanvasLayer/water.visible = false
+
+	$head/standCam/SubViewportContainer/SubViewport/Camera3D.global_transform = $head/standCam.global_transform
+
 
 func _duckORcrawling():
 	if Input.is_action_pressed("ctrl"):

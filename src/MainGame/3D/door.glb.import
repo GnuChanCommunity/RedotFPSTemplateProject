@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cn5kiew6ulpyi"
+uid="uid://btdnlurvalh07"
 path="res://.godot/imported/door.glb-b9b6323cb51037494d39121e53a75181.scn"
 
 [deps]
@@ -31,17 +31,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"door": {
-"use_external/enabled": true,
-"use_external/path": "res://MainGame/3D/door.tres"
-},
-"v_0": {
-"use_external/enabled": true,
-"use_external/path": "res://MainGame/3D/v_0.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

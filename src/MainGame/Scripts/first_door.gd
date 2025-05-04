@@ -11,7 +11,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('e'):
 		if GLobalVar.FirstDoor_ray:
 			if EnterArea:
-				if not unlockDoor: # don't forget this
+				if unlockDoor: # don't forget this > default is false
 					if not doorOpen:
 						if not ExitOpen:
 							doorOpen  = true 
@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 						unlockDoor = true
 
 			if ExitArea:
-				if not unlockDoor: # same don't forget
+				if unlockDoor: # same don't forget > default is false
 					if not doorOpen:
 						if not EnterOpen:
 							doorOpen = true

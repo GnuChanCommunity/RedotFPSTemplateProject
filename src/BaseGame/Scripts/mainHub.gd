@@ -609,6 +609,9 @@ func _on_cam_anim_animation_finished(anim_name: StringName) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 # pc 
 
+var sleepOver = false
+var sleepTime = 2
+
 func _process(delta: float) -> void:
 	_GiveLife()
 	_EnergyStatusRotate(delta)
@@ -623,6 +626,15 @@ func _process(delta: float) -> void:
 	_rotatePosition()
 	_RadioX()
 	_PcUsing()
+
+	if not sleepOver:
+		if sleepTime > 0:
+			sleepTime -= delta
+		else:
+			sleepOver = true
+			$fps/sleep.visible = false
+
+
 
 func _on_idl_0_finished() -> void:
 	$idl0.play()

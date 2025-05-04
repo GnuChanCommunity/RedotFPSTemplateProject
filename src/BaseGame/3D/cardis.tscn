@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://1l54fu27qkq1"]
+
+[ext_resource type="PackedScene" uid="uid://c4f73i1bryony" path="res://BaseGame/3D/extra/Cardis_portable.glb" id="1_gdk5h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdk5h"]
+size = Vector3(2.70142, 4.13855, 2.3252)
+
+[node name="cardis" type="StaticBody3D"]
+
+[node name="Cardis_portable" parent="." instance=ExtResource("1_gdk5h")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0345459, 1.99966, -0.0131836)
+shape = SubResource("BoxShape3D_gdk5h")

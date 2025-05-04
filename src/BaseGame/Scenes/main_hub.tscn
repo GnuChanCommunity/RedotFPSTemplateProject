@@ -493,12 +493,10 @@ shape = SubResource("BoxShape3D_asvxt")
 [node name="idl0" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_h2bg8")
 volume_db = -20.0
-bus = &"Ambiance"
 
 [node name="idl1" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_kqhhy")
 volume_db = -30.0
-bus = &"Ambiance"
 
 [node name="EnergyReadyArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61012, 0, 0)
