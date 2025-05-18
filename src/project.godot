@@ -30,6 +30,10 @@ GLobalVar="*res://BaseGame/Scripts/GLobalVAR.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
+[dotnet]
+
+project/assembly_name="FPSTemplate"
+
 [global_group]
 
 Object=""

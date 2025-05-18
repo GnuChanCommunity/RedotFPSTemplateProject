@@ -180,7 +180,7 @@ func _Run(delta):
 		elif GLobalVar.PlayerSettings["FOV"] < GLobalVar.PlayerSettings["FOVMAX"]:
 			GLobalVar.PlayerSettings["FOV"] += 50 * delta
 
-	$UI/test.text = "FOV: " + str(GLobalVar.PlayerSettings["FOV"]) + " Speed: " + str(GLobalVar.PlayerSettings["Speed"])
+	$hud/test.text = "FOV: " + str(GLobalVar.PlayerSettings["FOV"]) + " Speed: " + str(GLobalVar.PlayerSettings["Speed"])
 
 func _jump():
 	if Input.is_action_just_pressed("space") and is_on_floor():
