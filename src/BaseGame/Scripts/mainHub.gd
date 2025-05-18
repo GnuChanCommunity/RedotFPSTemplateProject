@@ -173,6 +173,7 @@ func _EnergyReadyArea():
 					else:
 						$EnergyReadyArea/EnergyReady2/ready2Anim.play_backwards("ready2")
 
+
 func _on_ready_0_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ready0":
 		if not GLobalVar.EnergyReady0:
@@ -184,6 +185,7 @@ func _on_ready_0_anim_animation_finished(anim_name: StringName) -> void:
 			EnergyReayMaterial_0.emission_enabled = false
 			$EnergyReadyArea/CloseEnergy.play()
 
+
 func _on_ready_1_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ready1":
 		if not GLobalVar.EnergyReady1:
@@ -194,6 +196,7 @@ func _on_ready_1_anim_animation_finished(anim_name: StringName) -> void:
 			GLobalVar.EnergyReady1 = false
 			EnergyReayMaterial_1.emission_enabled = false
 			$EnergyReadyArea/CloseEnergy.play()
+
 
 func _on_ready_2_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ready2":
@@ -207,6 +210,7 @@ func _on_ready_2_anim_animation_finished(anim_name: StringName) -> void:
 			$EnergyReadyArea/CloseEnergy.play()
 # Energy Ready X3
 
+
 # Fusion Start
 func _FusionStart():
 	if Input.is_action_just_pressed("left_m"):
@@ -218,6 +222,7 @@ func _FusionStart():
 				else:
 					$FusionStartArea/fsAnim.play_backwards("fsStart")
 					$FusionStartArea/FsClose.play()
+
 
 func _SpaceMapScan(delta):
 	if GLobalVar.FusionReady:
@@ -235,6 +240,7 @@ func _SpaceMapScan(delta):
 		$Cardis/r2.rotate_y(ScanPositionR2 * delta)
 		$Cardis/r3.rotate_y(ScanPositionR3 * delta)
 
+
 func _on_fs_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fsStart":
 		if not GLobalVar.FusionReady:
@@ -244,6 +250,7 @@ func _on_fs_anim_animation_finished(anim_name: StringName) -> void:
 			GLobalVar.FusionReady = false
 			$lights.hide()
 # Fusion Start
+
 
 # Start Engine
 func _StartEngine():
@@ -460,7 +467,7 @@ func _PortalEnter_LevelChange():
 					TalkEnd = true
 
 	if TalkEnd and not Talk.playing:
-		get_tree().change_scene_to_file("res://MainGame/Scenes/main_scene.tscn")
+		get_tree().change_scene_to_file("res://MainGame/Scene/main_gaym.tscn")
 
 var PlayFirstTalkWalk = false
 func _on_portal_ready_animation_finished(anim_name: StringName) -> void:

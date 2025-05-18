@@ -107,6 +107,9 @@ func  _process(_delta: float) -> void:
 		_ChangeHand()
 		_changeFOV()
 
+	if Input.is_action_just_pressed("escape") and not GLobalVar.PlayerSettings["talkMode"]:
+		GLobalVar.PlayerSettings["FOV"] = GLobalVar.PlayerSettings["FOVMAX"]
+
 	if GLobalVar.PlayerSettings["Swim"]:
 		$CanvasLayer/water.visible = true
 	else:
@@ -131,6 +134,7 @@ func _duckORcrawling():
 		$duck.disabled = true
 		$stand.disabled = true
 		$crawling.disabled = false
+
 	else:
 		if GLobalVar.PlayerSettings["Duck"] or GLobalVar.PlayerSettings["Crawling"]:
 			var can_stand = true
@@ -148,18 +152,17 @@ func _duckORcrawling():
 				$crawling.disabled = true
 
 func _SpeedChange():
-	if not Input.is_action_pressed("shift"):
-		if not $stand.disabled:
-			GLobalVar.PlayerSettings["Speed"] = 3
-		elif not $duck.disabled:
-			GLobalVar.PlayerSettings["Speed"] = 2
-		elif not $crawling.disabled:
-			GLobalVar.PlayerSettings["Speed"] = 1
+	if not $stand.disabled:
+		GLobalVar.PlayerSettings["Speed"] = 3
+	elif not $duck.disabled:
+		GLobalVar.PlayerSettings["Speed"] = 2
+	elif not $crawling.disabled:
+		GLobalVar.PlayerSettings["Speed"] = 1
 
 func _Run(delta):
 	# run
 	if Input.is_action_pressed("w") and Input.is_action_pressed("shift"):
-		if GLobalVar.PlayerSettings["CanRun"] and not $duck.disabled and not $crawling.disabled:
+		if GLobalVar.PlayerSettings["CanRun"] and $duck.disabled and $crawling.disabled:
 			if GLobalVar.PlayerSettings["Speed"] < GLobalVar.PlayerSettings["MaxSpeed"]:
 				GLobalVar.PlayerSettings["Speed"] += 5 * delta
 			if GLobalVar.PlayerSettings["FOV"] < GLobalVar.PlayerSettings["FOVMAX"]+10:
@@ -187,24 +190,13 @@ func _jump():
 	if Input.is_action_pressed("space") and GLobalVar.PlayerSettings["Swim"]:
 		velocity.y = GLobalVar.PlayerSettings["JumpHeight"]-2
 
-
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-
-	if GLobalVar.PlayerSettings["Swim"]:
-		if not Input.is_action_pressed("space"):
-			velocity += Vector3(0, -0.1, 0) * delta
-	else:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-
-
-
 	if GLobalVar.PlayerSettings["CanWalk"] and not GLobalVar.PlayerSettings["GiveLife"] and not GLobalVar.PlayerSettings["UsingPC"]:
 		_jump()
 		_Run(delta)
 		_duckORcrawling()
 		_SpeedChange()
+
 
 		var input_dir := Input.get_vector("a", "d", "w", "s")
 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

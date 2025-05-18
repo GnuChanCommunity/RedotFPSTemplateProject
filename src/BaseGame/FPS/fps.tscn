@@ -1,9 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://cns1uy01wn0kj"]
+[gd_scene load_steps=30 format=3 uid="uid://cns1uy01wn0kj"]
 
 [ext_resource type="Script" path="res://BaseGame/FPS/fps.gd" id="1_ge6oy"]
 [ext_resource type="Texture2D" uid="uid://cu15jqtsbg4t3" path="res://BaseGame/Images/cursor0.png" id="2_6bq6q"]
-[ext_resource type="PackedScene" uid="uid://dnn8qr4cmr4u1" path="res://MainGame/3D/mine_lamp.glb" id="2_lv8wl"]
-[ext_resource type="PackedScene" uid="uid://cwiukpcvgapoo" path="res://MainGame/3D/4xPuzzle_door_key.glb" id="3_j1ivr"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/ui.gd" id="3_pyj23"]
 [ext_resource type="Texture2D" uid="uid://dvflpekblut54" path="res://BaseGame/Images/cursor1.png" id="3_y2nbq"]
 [ext_resource type="Script" path="res://BaseGame/Scripts/settings.gd" id="4_2e1d4"]
@@ -109,40 +107,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
 
 [node name="hand1" type="Node3D" parent="head/standCam/hitRay"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.655, -1.275)
-visible = false
-
-[node name="mine_lamp" parent="head/standCam/hitRay/hand1" instance=ExtResource("2_lv8wl")]
-transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 1.005, 0.73, 0.09)
-
-[node name="top_" parent="head/standCam/hitRay/hand1/mine_lamp" index="0"]
-layers = 2
-
-[node name="hold" parent="head/standCam/hitRay/hand1/mine_lamp" index="1"]
-layers = 2
-
-[node name="glass" parent="head/standCam/hitRay/hand1/mine_lamp" index="2"]
-layers = 2
-
-[node name="cape" parent="head/standCam/hitRay/hand1/mine_lamp" index="3"]
-layers = 2
-
-[node name="lamp" parent="head/standCam/hitRay/hand1/mine_lamp" index="4"]
-layers = 2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="head/standCam/hitRay/hand1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.28606, 0)
 light_energy = 2.0
 omni_range = 20.0
 
 [node name="hand2" type="Node3D" parent="head/standCam/hitRay"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
 visible = false
-
-[node name="4xPuzzle_door_key" parent="head/standCam/hitRay/hand2" instance=ExtResource("3_j1ivr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.09, -0.275, 0.24)
-
-[node name="main_004" parent="head/standCam/hitRay/hand2/4xPuzzle_door_key" index="0"]
-layers = 2
 
 [node name="hand3" type="Node3D" parent="head/standCam/hitRay"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38, -1.275)
@@ -605,6 +577,3 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tixku")
 [connection signal="close_requested" from="UI/consoleWin" to="UI/consoleWin" method="_on_close_requested"]
 [connection signal="pressed" from="ui/turkish" to="UI/settings" method="_on_turkish_pressed"]
 [connection signal="pressed" from="ui/english" to="UI/settings" method="_on_english_pressed"]
-
-[editable path="head/standCam/hitRay/hand1/mine_lamp"]
-[editable path="head/standCam/hitRay/hand2/4xPuzzle_door_key"]

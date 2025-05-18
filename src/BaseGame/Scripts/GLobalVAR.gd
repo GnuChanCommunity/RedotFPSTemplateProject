@@ -17,7 +17,7 @@ var PlayerSettings = {
 	"Duck":false,
 	"Crawling":false,
 	"UsingPC":false,
-	"HandReady":false,
+	"HandReady":true,
 	"HandCurrentIndex":0,
 	"BeforeHandIndex":0,
 	"HoldingQuestItem":false,
