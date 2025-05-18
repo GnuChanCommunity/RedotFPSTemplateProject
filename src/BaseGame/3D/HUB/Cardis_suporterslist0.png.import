@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4w023g6vx4md"
+uid="uid://cn0myxr08kqc5"
 path.s3tc="res://.godot/imported/Cardis_suporterslist0.png-13ab6c0bc6fa89bc9317d5b5e0e286a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "61ae9af82cd4f98dc5ddcccf4c56bf08"
 }
 
 [deps]

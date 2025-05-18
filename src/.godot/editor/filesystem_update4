@@ -1,14 +1,6 @@
-res://BaseGame/LifeStock/3D/cubeChanAnimation_/idl.res
-res://BaseGame/LifeStock/3D/cubeChanAnimation_/screet.res
-res://BaseGame/LifeStock/3D/cubeChanAnimation_/walk_backward.res
-res://BaseGame/LifeStock/3D/cubeChanAnimation_/walk_forward.res
 res://BaseGame/Scenes/main_hub.tscn
 res://DefaultEnviroment.tres
 res://DefaultTheme.tres
 res://BaseGame/FPS/fps.gdshader
 res://BaseGame/Shaders/vhs.gdshader
 res://BaseGame/FPS/fps.tscn
-res://BaseGame/Scripts/GLobalVAR.gd
-res://BaseGame/FPS/fps.gd
-res://BaseGame/Scripts/mainHub.gd
-res://MainGame/Scene/main_gaym.tscn
