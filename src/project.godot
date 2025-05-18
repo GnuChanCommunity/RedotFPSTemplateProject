@@ -23,7 +23,7 @@ buses/default_bus_layout="res://DefaultBUS.tres"
 
 [autoload]
 
-GLobalVar="*res://BaseGame/Scripts/GLobalVAR.gd"
+GLobalVar="*res://BaseGame/Scripts/GLobalVar.gd"
 
 [display]
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb6paum6bcyxs"]
+
+[ext_resource type="PackedScene" uid="uid://cns1uy01wn0kj" path="res://BaseGame/FPS/fps.tscn" id="1_4u2os"]
+[ext_resource type="Script" path="res://MainGame/Scripts/MainGame.gd" id="1_t82rg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5432e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kym52"]
+
+[node name="MainGame" type="Node3D"]
+script = ExtResource("1_t82rg")
+
+[node name="Ground" type="Node3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 20, 0, -29.756, 0)
+
+[node name="StaticBody" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody"]
+shape = SubResource("SphereShape3D_5432e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_kym52")
+
+[node name="fps" parent="." instance=ExtResource("1_4u2os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.578954, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0419454, 0.99912, 0, -0.99912, 0.0419454, 0, 6.34358, 0)

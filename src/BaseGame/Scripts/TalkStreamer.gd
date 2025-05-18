@@ -3,7 +3,7 @@ class_name TalkStreamer
 
 var lang: String
 var current_stream: Dictionary
-var sound_resource: AudioStreamPlayer3D # Dışarıdan atanacak
+var sound_resource: AudioStreamPlayer3D
 
 func _ready() -> void:
 	lang = GLobalVar.PlayerSettings["lang"]

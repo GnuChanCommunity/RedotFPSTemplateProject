@@ -20,8 +20,8 @@ func _Console():
 				COutput.text += " > " + str(UInput.text) + "\n"
 				COutput.text += " ????? \n"
 
-			var line_count = COutput.get_line_count()
-			COutput.scroll_vertical = line_count
+			var local_line_count = COutput.get_line_count()
+			COutput.scroll_vertical = local_line_count
 
 			UInput.text = ""
 

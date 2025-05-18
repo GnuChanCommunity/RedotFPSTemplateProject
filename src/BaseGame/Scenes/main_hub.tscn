@@ -1,7 +1,7 @@
 [gd_scene load_steps=75 format=3 uid="uid://q66cixqomdbw"]
 
 [ext_resource type="PackedScene" uid="uid://cns1uy01wn0kj" path="res://BaseGame/FPS/fps.tscn" id="1_k2el7"]
-[ext_resource type="Script" path="res://BaseGame/Scripts/mainHub.gd" id="1_y2e7l"]
+[ext_resource type="Script" path="res://BaseGame/Scripts/MainHub.gd" id="1_y2e7l"]
 [ext_resource type="Environment" uid="uid://ofuuhkoyp2b0" path="res://DefaultEnviroment.tres" id="2_uwbpg"]
 [ext_resource type="PackedScene" uid="uid://dvwhyqm754wib" path="res://BaseGame/3D/HUB/centerObject.glb" id="3_66bg3"]
 [ext_resource type="PackedScene" uid="uid://ilolfoh8j4ty" path="res://BaseGame/3D/HUB/Cardis.glb" id="3_oxgc4"]
@@ -448,7 +448,7 @@ _data = {
 "animFinish": SubResource("Animation_ihw1q")
 }
 
-[node name="MainHUB" type="Node3D"]
+[node name="MainHub" type="Node3D"]
 script = ExtResource("1_y2e7l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -39,7 +39,10 @@ func _ready() -> void:
 		talk_streamer.sound_resource = $GC/talk
 	else:
 		printerr("Error: $GC/talk is not an AudioStreamPlayer3D or not found. TalkStreamer will not play sounds.")
+	_scene_pre_setup()
 
+	
+func _scene_pre_setup() -> void:
 	$idl0.play()
 	$idl1.play()
 	EnergyReayMaterial_0.emission_enabled = false
@@ -229,7 +232,7 @@ func _process_gc_conversation_and_level_change():
 	
 	# Change scene when talk is completed and sound is not playing
 	if TalkEnd and talk_streamer.sound_resource and not talk_streamer.sound_resource.playing:
-		get_tree().change_scene_to_file("res://MainGame/Scene/main_gaym.tscn")
+		get_tree().change_scene_to_file("res://MainGame/Scene/MainGame.tscn")
 
 var PlayFirstTalkWalk = false
 func _on_portal_ready_animation_finished(anim_name: StringName) -> void:
@@ -255,32 +258,33 @@ func _handle_settings_panel_interaction():
 				match hit.name:
 					"ST0":
 						GLobalVar.settings0 = not GLobalVar.settings0
-						$Settings/ST0/Anim_ST0.play("open0" if GLobalVar.settings0 else &"open0_reverse")
-						if not GLobalVar.settings0: $Settings/ST0/Anim_ST0.play_backwards("open0") # Alternatif
+						$Settings/ST0/Anim_ST0.play("open0" if GLobalVar.settings0 else "open0_reverse")
+						if not GLobalVar.settings0: $Settings/ST0/Anim_ST0.play_backwards("open0")
 					"ST1":
 						GLobalVar.settings1 = not GLobalVar.settings1
-						$Settings/ST1/Anim_ST1.play("open1" if GLobalVar.settings1 else &"open1_reverse")
+						$Settings/ST1/Anim_ST1.play("open1" if GLobalVar.settings1 else "open1_reverse")
 						if not GLobalVar.settings1: $Settings/ST1/Anim_ST1.play_backwards("open1")
 					"ST2":
 						GLobalVar.settings2 = not GLobalVar.settings2
-						$Settings/ST2/Anim_ST2.play("open2" if GLobalVar.settings2 else &"open2_reverse")
+						$Settings/ST2/Anim_ST2.play("open2" if GLobalVar.settings2 else "open2_reverse")
 						if not GLobalVar.settings2: $Settings/ST2/Anim_ST2.play_backwards("open2")
 					"ST3":
 						GLobalVar.settings3 = not GLobalVar.settings3
-						$Settings/ST3/Anim_ST3.play("open3" if GLobalVar.settings3 else &"open3_reverse")
+						$Settings/ST3/Anim_ST3.play("open3" if GLobalVar.settings3 else "open3_reverse")
 						if not GLobalVar.settings3: $Settings/ST3/Anim_ST3.play_backwards("open3")
 					"ST4":
 						GLobalVar.settings4 = not GLobalVar.settings4
-						$Settings/ST4/Anim_ST4.play("open4" if GLobalVar.settings4 else &"open4_reverse")
+						$Settings/ST4/Anim_ST4.play("open4" if GLobalVar.settings4 else "open4_reverse")
 						if not GLobalVar.settings4: $Settings/ST4/Anim_ST4.play_backwards("open4")
 					"ST5":
 						GLobalVar.settings5 = not GLobalVar.settings5
-						$Settings/ST5/Anim_ST5.play("open5" if GLobalVar.settings5 else &"open5_reverse")
+						$Settings/ST5/Anim_ST5.play("open5" if GLobalVar.settings5 else "open5_reverse")
 						if not GLobalVar.settings5: $Settings/ST5/Anim_ST5.play_backwards("open5")
 					"ST6":
 						GLobalVar.settings6 = not GLobalVar.settings6
-						$Settings/ST6/Anim_ST6.play("open6" if GLobalVar.settings6 else &"open6_reverse")
+						$Settings/ST6/Anim_ST6.play("open6" if GLobalVar.settings6 else "open6_reverse")
 						if not GLobalVar.settings6: $Settings/ST6/Anim_ST6.play_backwards("open6")
+
 
 
 func _handle_gc_direkct_interaction():
